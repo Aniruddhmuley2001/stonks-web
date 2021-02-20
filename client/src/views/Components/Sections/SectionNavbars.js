@@ -35,7 +35,7 @@ export default function SectionNavbars() {
   const classes = useStyles();
   return (
     <div className={classes.section}>
-      <div id="navbar" className={classes.navbar}>
+      <div id="navbar" className={classes.navbar} style={{overflow:"visible"}}>
         <Header
           brand="Stonks"
           color="info"
