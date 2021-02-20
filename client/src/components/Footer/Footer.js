@@ -7,6 +7,8 @@ import classNames from "classnames";
 // material-ui core components
 import { List, ListItem } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import Tooltip from "@material-ui/core/Tooltip";
+import Button from "components/CustomButtons/Button.js";
 
 // @material-ui/icons
 import Favorite from "@material-ui/icons/Favorite";
@@ -33,14 +35,65 @@ export default function Footer(props) {
           <List className={classes.list}>
             <ListItem className={classes.inlineBlock}>
               <a
-                href="https://www.creative-tim.com/?ref=mkr-footer"
+                href="https://www.dcei.daiict.ac.in"
                 className={classes.block}
                 target="_blank"
               >
-                Creative Tim
+                DCEI
               </a>
             </ListItem>
             <ListItem className={classes.inlineBlock}>
+              <Tooltip
+                id="instagram-linkedin"
+                title="Follow us on LinkedIn"
+                placement={window.innerWidth > 959 ? "top" : "left"}
+                classes={{ tooltip: classes.tooltip }}
+              >
+                <Button
+                  href="https://www.linkedin.com/company/dcei"
+                  target="_blank"
+                  color="transparent"
+                  className={classes.navLink}
+                >
+                  <i className={classes.socialIcons + " fab fa-linkedin"} />
+                </Button>
+              </Tooltip>
+            </ListItem>
+            <ListItem className={classes.inlineBlock}>
+              <Tooltip
+                id="instagram-facebook"
+                title="Follow us on facebook"
+                placement={window.innerWidth > 959 ? "top" : "left"}
+                classes={{ tooltip: classes.tooltip }}
+              >
+                <Button
+                  color="transparent"
+                  href="https://www.facebook.com/CreativeTim?ref=creativetim"
+                  target="_blank"
+                  className={classes.navLink}
+                >
+                  <i className={classes.socialIcons + " fab fa-facebook"} />
+                </Button>
+              </Tooltip>
+            </ListItem>
+            <ListItem className={classes.inlineBlock}>
+              <Tooltip
+                id="instagram-tooltip"
+                title="Follow us on instagram"
+                placement={window.innerWidth > 959 ? "top" : "left"}
+                classes={{ tooltip: classes.tooltip }}
+              >
+                <Button
+                  color="transparent"
+                  href="https://www.instagram.com/CreativeTimOfficial?ref=creativetim"
+                  target="_blank"
+                  className={classes.navLink}
+                >
+                  <i className={classes.socialIcons + " fab fa-instagram"} />
+                </Button>
+              </Tooltip>
+            </ListItem>
+            {/*<ListItem className={classes.inlineBlock}>
               <a
                 href="https://www.creative-tim.com/presentation?ref=mkr-footer"
                 className={classes.block}
@@ -66,7 +119,7 @@ export default function Footer(props) {
               >
                 Licenses
               </a>
-            </ListItem>
+  </ListItem>*/}
           </List>
         </div>
         <div className={classes.right}>
@@ -77,9 +130,9 @@ export default function Footer(props) {
             className={aClasses}
             target="_blank"
           >
-            Creative Tim
+            DCEI
           </a>{" "}
-          for a better web.
+          for Stonks.
         </div>
       </div>
     </footer>

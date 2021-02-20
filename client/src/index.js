@@ -12,7 +12,7 @@ import ProfilePage from "views/ProfilePage/ProfilePage.js";
 import LoginPage from "views/LoginPage/LoginPage.js";
 import OrgLeadboard from "views/OrgLeadboard/OrgLeadboard.js";
 import TradeLeadboard from "views/TradeLeadboard/TradeLeadboard.js";
-
+import Dashboard from "views/Dashboard/Dashboard.js";
 var hist = createBrowserHistory();
 
 ReactDOM.render(
@@ -22,7 +22,8 @@ ReactDOM.render(
       <Route path="/profile-page" component={ProfilePage} />
       <Route path="/login-page" component={LoginPage} />
       <Route path="/leaderboard-org" component={OrgLeadboard} />      
-      <Route path="/leaderboard-trader" component={TradeLeadboard} />      
+      <Route path="/leaderboard-trader" component={TradeLeadboard} />
+      <Route path="/dashboard" component={Dashboard}/>      
       <Route path="/" component={Components} />
     </Switch>
   </Router>,

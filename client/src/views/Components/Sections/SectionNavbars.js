@@ -3,23 +3,23 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import Icon from "@material-ui/core/Icon";
+// import Icon from "@material-ui/core/Icon";
 // @material-ui/icons
-import Search from "@material-ui/icons/Search";
-import Email from "@material-ui/icons/Email";
-import Face from "@material-ui/icons/Face";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import Explore from "@material-ui/icons/Explore";
+// import Search from "@material-ui/icons/Search";
+// import Email from "@material-ui/icons/Email";
+// import Face from "@material-ui/icons/Face";
+// import AccountCircle from "@material-ui/icons/AccountCircle";
+// import Explore from "@material-ui/icons/Explore";
 // core components
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
+// import GridContainer from "components/Grid/GridContainer.js";
+// import GridItem from "components/Grid/GridItem.js";
 import Header from "components/Header/Header.js";
-import CustomInput from "components/CustomInput/CustomInput.js";
+// import CustomInput from "components/CustomInput/CustomInput.js";
 import CustomDropdown from "components/CustomDropdown/CustomDropdown.js";
 import Button from "components/CustomButtons/Button.js";
 
-import image from "assets/img/bg.jpg";
-import profileImage from "assets/img/faces/avatar.jpg";
+// import image from "assets/img/bg.jpg";
+// import profileImage from "assets/img/faces/avatar.jpg";
 import { Apps, CloudDownload, TocIcon } from "@material-ui/icons";
 import PersonIcon from '@material-ui/icons/Person';
 import ShowChartIcon from '@material-ui/icons/ShowChart';
@@ -35,7 +35,7 @@ export default function SectionNavbars() {
   const classes = useStyles();
   return (
     <div className={classes.section}>
-      <div id="navbar" className={classes.navbar}>
+      <div id="navbar" className={classes.navbar} style={{overflow:"visible"}}>
         <Header
           brand="Stonks"
           color="info"
@@ -62,11 +62,11 @@ export default function SectionNavbars() {
               </ListItem>
               <ListItem className={classes.listItem}>
                 <Button
-                  href={"/trade"}
+                  href={"/dashboard"}
                   color="transparent"
                   className={classes.navLink}
                 >
-                  <ShowChartIcon className={classes.icons} /> Trade
+                  <ShowChartIcon className={classes.icons} /> Dashboard
                 </Button>  
               </ListItem>
               <ListItem className={classes.listItem}>
