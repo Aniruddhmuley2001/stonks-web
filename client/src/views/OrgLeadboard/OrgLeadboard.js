@@ -5,8 +5,9 @@ import Paper from '@material-ui/core/Paper';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableList from '../Components/TableList';
 import SectionNavbars from "../Components/Sections/SectionNavbars";
-import Header from "components/Header/Header"
-import HeaderLinks from "components/Header/HeaderLinks";
+import Footer from "components/Footer/Footer.js";
+// import Header from "components/Header/Header"
+// import HeaderLinks from "components/Header/HeaderLinks";
 
 const columns = [
   { id: 'position', label: 'Position', minWidth: 80, align: 'center' },
@@ -69,6 +70,7 @@ export default function OrgLeadboard() {
         onChangePage={handleChangePage}
         onChangeRowsPerPage={handleChangeRowsPerPage}
         />
+        <Footer />
     </Paper>
   );
 }

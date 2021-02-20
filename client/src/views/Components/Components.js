@@ -8,6 +8,7 @@ import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
 // core components
 import Header from "components/Header/Header.js";
+import Footer from "components/Footer/Footer.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 // import Button from "components/CustomButtons/Button.js";
@@ -80,6 +81,8 @@ export default function Components(props) {
           </Link>
         </GridItem>*/}
       </div>
+
+      <Footer />
     </div>
   );
 }
