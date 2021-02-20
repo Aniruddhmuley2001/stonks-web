@@ -62,11 +62,11 @@ export default function SectionNavbars() {
               </ListItem>
               <ListItem className={classes.listItem}>
                 <Button
-                  href={"/trade"}
+                  href={"/dashboard"}
                   color="transparent"
                   className={classes.navLink}
                 >
-                  <ShowChartIcon className={classes.icons} /> Trade
+                  <ShowChartIcon className={classes.icons} /> Dashboard
                 </Button>  
               </ListItem>
               <ListItem className={classes.listItem}>

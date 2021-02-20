@@ -2,18 +2,13 @@ import React from 'react';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-
+import TablePagination from '@material-ui/core/TablePagination';
 import SectionNavbars from "../Components/Sections/SectionNavbars";
 import Header from "components/Header/Header"
 import HeaderLinks from "components/Header/HeaderLinks";
-
+//import { TableContainer } from '@material-ui/core';
+import TableList from '../Components/TableList';
 const columns = [
   { id: 'position', label: 'Position', minWidth: 80, align: 'center' },
   { id: 'name', label: 'Name', minWidth: 120, align: 'center' },
@@ -65,39 +60,7 @@ export default function OrgLeadboard() {
     <Paper className={classes.root}>
         <SectionNavbars />
         <h2 className={classes.title}>Traders Leaderboard</h2>
-        <TableContainer className={classes.container}>
-        <Table stickyHeader aria-label="sticky table">
-            <TableHead>
-            <TableRow>
-                {columns.map((column) => (
-                <TableCell
-                    key={column.id}
-                    align={column.align}
-                    style={{ minWidth: column.minWidth }}
-                >
-                    {column.label}
-                </TableCell>
-                ))}
-            </TableRow>
-            </TableHead>
-            <TableBody>
-            {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-                return (
-                <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                    {columns.map((column) => {
-                    const value = row[column.id];
-                    return (
-                        <TableCell key={column.id} align={column.align}>
-                        {column.format && typeof value === 'number' ? column.format(value) : value}
-                        </TableCell>
-                    );
-                    })}
-                </TableRow>
-                );
-            })}
-            </TableBody>
-        </Table>
-        </TableContainer>
+        <TableList container={classes.container} columns={columns} rows={rows} rowsPerPage={rowsPerPage} page={page}/>
         <TablePagination
         rowsPerPageOptions={[10, 25, 100]}
         component="div"
