@@ -3,6 +3,7 @@ import {Box,Typography} from "@material-ui/core";
 import SectionNavbars from "../Components/Sections/SectionNavbars";
 import RecentTransactionList from "./RecentTransactionList";
 import Profile from './Profile';
+import Footer from "../../components/Footer/Footer.js";
 import TradeOptions from "./TradeOptions";
 export default function Dashboard(){
   
@@ -21,6 +22,7 @@ return(
    <RecentTransactionList/>
    </Box>
    </Box>
+   <Footer/>
    </>    
 );
 }

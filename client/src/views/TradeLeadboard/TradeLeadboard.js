@@ -5,17 +5,14 @@ import Paper from '@material-ui/core/Paper';
 import TableRow from '@material-ui/core/TableRow';
 import TablePagination from '@material-ui/core/TablePagination';
 import SectionNavbars from "../Components/Sections/SectionNavbars";
-<<<<<<< HEAD
+
 import Header from "components/Header/Header"
 import HeaderLinks from "components/Header/HeaderLinks";
 //import { TableContainer } from '@material-ui/core';
 import TableList from '../Components/TableList';
-=======
-import Footer from "components/Footer/Footer.js";
-// import Header from "components/Header/Header"
-// import HeaderLinks from "components/Header/HeaderLinks";
 
->>>>>>> 1ba27587a3f969f3ba2b8a84186a7ce22928a530
+import Footer from "../../components/Footer/Footer.js";
+
 const columns = [
   { id: 'position', label: 'Position', minWidth: 80, align: 'center' },
   { id: 'name', label: 'Name', minWidth: 120, align: 'center' },
