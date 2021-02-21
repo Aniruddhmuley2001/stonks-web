@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {FormControl,InputLabel,Select,MenuItem,Box,Card,Typography,makeStyles, TextField, Button} from "@material-ui/core";
 import  CloseIcon  from "@material-ui/icons/Close";
+import {Alert,AlertTitle} from '@material-ui/lab';
 const useStyles=makeStyles({
    root:{
        backgroundColor:"#f2f2f2",
@@ -26,7 +27,7 @@ const useStyles=makeStyles({
 const stocks=["APPLE","AMAZON","MICROSOFT","RELIANCE","TCS"]
 const stockPrice=25;
 const totalAmount=1000;
-export default function TradeOrder({closeModal,action}){
+export default function TradeOrder({closeModal,action,stateSuccess}){
    const classes=useStyles();
    const [currentStock,setCurrentStock]=useState(stocks[0]);
    const [quantity,setQuantity]=useState(0);
@@ -40,8 +41,14 @@ export default function TradeOrder({closeModal,action}){
      if(isNaN(Number(quantity))||!(parseInt(quantity)===Number(quantity))){
          setIsError('Quantity must be Integer');
      }
-    
+     else{
+       setIsError('');
+       stateSuccess(true);
+     }
    }
+   useEffect(()=>{
+      if(isError==='') closeModal();
+   },[isError])
    const handleQuantity=(event)=>{
        setQuantity(event.target.value);
    }
@@ -101,5 +108,6 @@ export default function TradeOrder({closeModal,action}){
         </form>
         </Card>
         </>
+
     )
 }

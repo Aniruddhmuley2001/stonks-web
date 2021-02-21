@@ -3,16 +3,26 @@ import {Modal,Card,Typography,Button,Box} from '@material-ui/core';
 import  {makeStyles} from '@material-ui/core';
 import { blue } from '@material-ui/core/colors';
 import { setSyntheticLeadingComments } from 'typescript';
+import {Alert,AlertTitle} from '@material-ui/lab';
 import TradeOrder from "./TradeOrder";
+import { GpsFixed } from '@material-ui/icons';
 const useStyles = makeStyles({
     content:{
         margin:'20px 10px',
     },
+    alert:{
+        position:'fixed',
+        height:'10%',
+        width:'20%',
+        left:'40%',
+        top:'10%',
+    }
   });
 
 export default function TradeOptions(){
     const [open,setOpen]=useState(false);
     const action=useRef(null);
+    const [success,setSuccess]=useState(false);
     const classes=useStyles();
     const openModal1=()=>{
         action.current="BUY";
@@ -24,6 +34,12 @@ export default function TradeOptions(){
     }
     const closeModal=()=>{
         setOpen(false);
+    }
+    const checkSuccess=()=>{
+        setSuccess(true);
+        setTimeout(()=>{
+            setSuccess(false);
+        },2000);
     }
     return(
     <>
@@ -40,8 +56,14 @@ export default function TradeOptions(){
       aria-labelledby="simple-modal-title"
       aria-describedby="simple-modal-description"
      >
-     <TradeOrder closeModal={closeModal} action={action.current}/>
+     <TradeOrder closeModal={closeModal} action={action.current} stateSuccess={checkSuccess}/>
     </Modal>
+    {  
+        success && <Alert className={classes.alert} severity="success">
+        <AlertTitle>Success</AlertTitle>
+        <strong>Your Request will be processed soon</strong>
+      </Alert> 
+     }
     </>
     );
 }
