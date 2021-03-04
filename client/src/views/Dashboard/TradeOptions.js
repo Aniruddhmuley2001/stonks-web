@@ -16,6 +16,14 @@ const useStyles = makeStyles({
         width:'20%',
         left:'40%',
         top:'10%',
+    },
+    border:{
+        backgroundColor:"#f2f2f2",
+        height:'50%',
+        // width:'30%',
+        top:'25%',   //Set such that 2*top+height=100% to center it
+        // left:'15%',
+        borderRadius:'12px'
     }
   });
 
@@ -43,26 +51,26 @@ export default function TradeOptions(){
     }
     return(
     <>
-   <Box display="flex" flexDirection="column" flexGrow={1} alignItems="center">
-   <Typography variant="h4" align="center" style={{margin:'20px 0px'}}>
-    Trade Options
-   </Typography>  
-    <Button className={classes.content} variant="contained"color="primary" onClick={openModal1}> Buy </Button>
-    <Button className={classes.content} variant="contained" color="secondary" onClick={openModal2}> Sell </Button>
+    <Box display="flex" flexDirection="column" flexGrow={1} alignItems="center">
+        <Typography variant="h4" align="center" style={{margin:'20px 0px'}}>
+            Trade Options
+        </Typography>  
+        <Button className={classes.content} variant="contained"color="primary" onClick={openModal1}> Buy </Button>
+        <Button className={classes.content} variant="contained" color="secondary" onClick={openModal2}> Sell </Button>
     </Box>
-     <Modal className={classes.modal}
-     open={open}
-     onClose={closeModal}
-      aria-labelledby="simple-modal-title"
-      aria-describedby="simple-modal-description"
-     >
-     <TradeOrder closeModal={closeModal} action={action.current} stateSuccess={checkSuccess}/>
+    <Modal className={classes.modal}
+        open={open}
+        onClose={closeModal}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+    >
+        <TradeOrder closeModal={closeModal} action={action.current} stateSuccess={checkSuccess}/>
     </Modal>
     {  
         success && <Alert className={classes.alert} severity="success">
-        <AlertTitle>Success</AlertTitle>
-        <strong>Your Request will be processed soon</strong>
-      </Alert> 
+            <AlertTitle>Success</AlertTitle>
+            <strong>Your Request will be processed soon</strong>
+        </Alert> 
      }
     </>
     );

@@ -20,7 +20,7 @@ import CustomInput from "components/CustomInput/CustomInput.js";
 
 import styles from "assets/jss/material-kit-react/views/loginPage.js";
 
-import image from "assets/img/bg7.jpg";
+import image from "assets/img/stock-background-3.jpg";
 
 const useStyles = makeStyles(styles);
 

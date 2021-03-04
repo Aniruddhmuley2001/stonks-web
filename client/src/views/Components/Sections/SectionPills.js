@@ -6,6 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import InfoIcon from '@material-ui/icons/Info';
 import GavelIcon from '@material-ui/icons/Gavel';
 import BusinessIcon from '@material-ui/icons/Business';
+import Typography from '@material-ui/core/Typography'
 
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
@@ -23,7 +24,9 @@ export default function SectionPills() {
       <div className={classes.container}>
         <div id="navigation-pills">
           <div className={classes.title}>
-            <h3>The Game</h3>
+          <Typography variant="h4" align="center" style={{margin:'20px 0px'}}>
+            The Game
+          </Typography>
           </div>
           <GridContainer>
             <GridItem>

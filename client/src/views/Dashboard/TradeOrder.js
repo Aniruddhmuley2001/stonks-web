@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import {FormControl,InputLabel,Select,MenuItem,Box,Card,Typography,makeStyles, TextField, Button} from "@material-ui/core";
+import Icon from '@material-ui/core/Icon';
 import  CloseIcon  from "@material-ui/icons/Close";
 import {Alert,AlertTitle} from '@material-ui/lab';
 const useStyles=makeStyles({
    root:{
-       backgroundColor:"#f2f2f2",
-       height:'50%',
-       width:'30%',
-       position:'absolute',
-       top:'25%',   //Set such that 2*top+height=100% to center it
-       left:'35%',
-       borderRadius:'12px'
+      backgroundColor:"#f2f2f2",
+      height:'50%',
+      width:'30%',
+      position:'absolute',
+      top:'25%',   //Set such that 2*top+height=100% to center it
+      left:'35%',
+      borderRadius:'12px'
    },
    flex:{
      margin:'20px',
@@ -105,6 +106,14 @@ export default function TradeOrder({closeModal,action,stateSuccess}){
         <Box display="flex" flexDirection="row" flexGrow={1}  justifyContent="center">
             <Button type="submit" variant="contained" color="primary"> Submit </Button>
         </Box>
+        {/*<Button
+          variant="contained"
+          color="primary"
+          className={classes.button}
+          endIcon={<Icon>send</Icon>}
+        >
+          Send
+        </Button>*/}
         </form>
         </Card>
         </>

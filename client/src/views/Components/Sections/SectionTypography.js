@@ -1,6 +1,7 @@
 import React from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
+import { Typography } from "@material-ui/core";
 
 // @material-ui/icons
 
@@ -29,7 +30,9 @@ export default function SectionTypography() {
       <div className={classes.container}>
         <div id="images">
           <div className={classes.title}>
-            <h2>Sponsors</h2>
+            <Typography variant="h4" align="center" style={{margin:'20px 0px'}}>
+              Sponsors
+            </Typography>
           </div>
           <br />
           <GridContainer>

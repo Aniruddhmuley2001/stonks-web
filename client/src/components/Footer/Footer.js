@@ -68,7 +68,7 @@ export default function Footer(props) {
               >
                 <Button
                   color="transparent"
-                  href="https://www.facebook.com/CreativeTim?ref=creativetim"
+                  href="https://www.facebook.com/daiict.dcei/"
                   target="_blank"
                   className={classes.navLink}
                 >
@@ -85,7 +85,7 @@ export default function Footer(props) {
               >
                 <Button
                   color="transparent"
-                  href="https://www.instagram.com/CreativeTimOfficial?ref=creativetim"
+                  href="https://www.instagram.com/dcei.daiict/"
                   target="_blank"
                   className={classes.navLink}
                 >
@@ -93,40 +93,13 @@ export default function Footer(props) {
                 </Button>
               </Tooltip>
             </ListItem>
-            {/*<ListItem className={classes.inlineBlock}>
-              <a
-                href="https://www.creative-tim.com/presentation?ref=mkr-footer"
-                className={classes.block}
-                target="_blank"
-              >
-                About us
-              </a>
-            </ListItem>
-            <ListItem className={classes.inlineBlock}>
-              <a
-                href="http://blog.creative-tim.com/?ref=mkr-footer"
-                className={classes.block}
-                target="_blank"
-              >
-                Blog
-              </a>
-            </ListItem>
-            <ListItem className={classes.inlineBlock}>
-              <a
-                href="https://www.creative-tim.com/license?ref=mkr-footer"
-                className={classes.block}
-                target="_blank"
-              >
-                Licenses
-              </a>
-  </ListItem>*/}
           </List>
         </div>
         <div className={classes.right}>
           &copy; {1900 + new Date().getYear()} , made with{" "}
           <Favorite className={classes.icon} /> by{" "}
           <a
-            href="https://www.creative-tim.com?ref=mkr-footer"
+            href="https://www.dcei.daiict.ac.in"
             className={aClasses}
             target="_blank"
           >
