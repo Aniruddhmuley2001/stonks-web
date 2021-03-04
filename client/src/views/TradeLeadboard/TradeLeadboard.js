@@ -6,11 +6,11 @@ import TableRow from '@material-ui/core/TableRow';
 import TablePagination from '@material-ui/core/TablePagination';
 import SectionNavbars from "../Components/Sections/SectionNavbars";
 
-import Footer from "components/Footer/Footer.js";
-// import Header from "components/Header/Header"
-// import HeaderLinks from "components/Header/HeaderLinks";
+import Header from "components/Header/Header"
+import HeaderLinks from "components/Header/HeaderLinks";
 //import { TableContainer } from '@material-ui/core';
 import TableList from '../Components/TableList';
+import Footer from "components/Footer/Footer.js";
 
 const columns = [
   { id: 'position', label: 'Position', minWidth: 80, align: 'center' },
