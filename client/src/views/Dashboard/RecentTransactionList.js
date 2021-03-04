@@ -13,27 +13,28 @@ const useStyles = makeStyles({
   });
 
 const columns = [
-    { id: 'position', label: 'Position', minWidth: 80, align: 'center' },
-    { id: 'name', label: 'Name', minWidth: 120, align: 'center' },
+    { id: 'organization', label: 'Organization', minWidth: 90, align: 'center' },
+    { id: 'status', label: 'Status', minWidth: 90, align: 'center' },
+    { id: 'units', label: 'Units', minWidth: 60, align: 'center' },
     {
-      id: 'earning',
-      label: 'Bucks\u00a0earned',
-      minWidth: 100,
+      id: 'amount',
+      label: 'Bucks\u00a0',
+      minWidth: 60,
       align: 'center',
       format: (value) => value.toLocaleString('en-US'),
     },
   ];
   
-  function createData(position, name, earning) {
-    return { position, name, earning };
+  function createData(organization, status, units, amount) {
+    return { organization, status, units, amount };
   }
   
   const rows = [
-    createData(1, 'A', 10),
-    createData(2, 'B', 11),
-    createData(3, 'C', 14),
-    createData(4, 'D', 12),
-    createData(5, 'E', 13),
+    createData('A', 'Buy', 2, 200),
+    createData('B', 'Buy', 5, 1000),
+    createData('D', 'Sell', 2, 100),
+    createData('E', 'Buy', 4, 800),
+    createData('C', 'Sell', 3, 600),
   ];
 export default function RecentTransactionList() {
 const classes = useStyles();

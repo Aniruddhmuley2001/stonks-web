@@ -78,62 +78,6 @@ export default function SectionNavbars() {
                   <PersonIcon className={classes.icons} /> Login
                 </Button>
               </ListItem>
-              <ListItem className={classes.listItem}>
-                {/*<Tooltip title="Delete">
-                  <IconButton aria-label="Delete">
-                    <DeleteIcon />
-                  </IconButton>
-                </Tooltip>*/}
-                <Tooltip
-                  id="instagram-linkedin"
-                  title="Follow us on LinkedIn"
-                  placement={window.innerWidth > 959 ? "top" : "left"}
-                  classes={{ tooltip: classes.tooltip }}
-                >
-                  <Button
-                    href="https://www.linkedin.com/company/dcei"
-                    target="_blank"
-                    color="transparent"
-                    className={classes.navLink}
-                  >
-                    <i className={classes.socialIcons + " fab fa-linkedin"} />
-                  </Button>
-                </Tooltip>
-              </ListItem>
-              <ListItem className={classes.listItem}>
-                <Tooltip
-                  id="instagram-facebook"
-                  title="Follow us on facebook"
-                  placement={window.innerWidth > 959 ? "top" : "left"}
-                  classes={{ tooltip: classes.tooltip }}
-                >
-                  <Button
-                    color="transparent"
-                    href="https://www.facebook.com/CreativeTim?ref=creativetim"
-                    target="_blank"
-                    className={classes.navLink}
-                  >
-                    <i className={classes.socialIcons + " fab fa-facebook"} />
-                  </Button>
-                </Tooltip>
-              </ListItem>
-              <ListItem className={classes.listItem}>
-                <Tooltip
-                  id="instagram-tooltip"
-                  title="Follow us on instagram"
-                  placement={window.innerWidth > 959 ? "top" : "left"}
-                  classes={{ tooltip: classes.tooltip }}
-                >
-                  <Button
-                    color="transparent"
-                    href="https://www.instagram.com/CreativeTimOfficial?ref=creativetim"
-                    target="_blank"
-                    className={classes.navLink}
-                  >
-                    <i className={classes.socialIcons + " fab fa-instagram"} />
-                  </Button>
-                </Tooltip>
-              </ListItem>
             </List>
           }
         />
