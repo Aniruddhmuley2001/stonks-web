@@ -5,7 +5,7 @@ const userSchema = mongoose.Schema({
     email: String,
     password: String,
     credits: Number
-})
+},{ timestamps: { createdAt: 'created_at' } })
 
 
 module.exports = mongoose.model('User', userSchema)

@@ -208,6 +208,20 @@ app.get("/holdings",authToken,async (req,res)=>{
   }
 })
 
+app.get('/verifyToken',authToken,async (req,res)=>{
+  if(req.user){
+    let user = await User.findOne({username:req.user}).exec()
+    if(user){
+      
+    res.json(user)
+    }else{
+      res.send("User not found")
+    }
+  }
+  else{
+    res.send("Error in request")
+  }
+})
 app.post("/insertStocks",async (req,res)=>{
 
   let {index,name,price} = req.body
