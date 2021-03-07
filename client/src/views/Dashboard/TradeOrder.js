@@ -15,7 +15,7 @@ const useStyles=makeStyles({
    },
    flex:{
      margin:'20px',
-     height:'300px',
+     height:'200px',
    },
    close:{
     marginTop:'5px',
