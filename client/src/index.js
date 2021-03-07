@@ -1,31 +1,7 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { createBrowserHistory } from "history";
-import { Router, Route, Switch } from "react-router-dom";
-
 import "assets/scss/material-kit-react.scss?v=1.9.0";
-
+import ReactDOM from "react-dom";
 // pages for this product
-import Components from "views/Components/Components.js";
-import LandingPage from "views/LandingPage/LandingPage.js";
-import ProfilePage from "views/ProfilePage/ProfilePage.js";
-import LoginPage from "views/LoginPage/LoginPage.js";
-import OrgLeadboard from "views/OrgLeadboard/OrgLeadboard.js";
-import TradeLeadboard from "views/TradeLeadboard/TradeLeadboard.js";
-import Dashboard from "views/Dashboard/Dashboard.js";
-var hist = createBrowserHistory();
+import React from "react";
+import App from "./App";
 
-ReactDOM.render(
-  <Router history={hist}>
-    <Switch>
-      <Route path="/landing-page" component={LandingPage} />
-      <Route path="/profile-page" component={ProfilePage} />
-      <Route path="/login-page" component={LoginPage} />
-      <Route path="/leaderboard-org" component={OrgLeadboard} />      
-      <Route path="/leaderboard-trader" component={TradeLeadboard} />
-      <Route path="/dashboard" component={Dashboard}/>      
-      <Route path="/" component={Components} />
-    </Switch>
-  </Router>,
-  document.getElementById("root")
-);
+ReactDOM.render(<App />, document.getElementById("root"));

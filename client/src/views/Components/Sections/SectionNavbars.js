@@ -21,62 +21,93 @@ import Button from "components/CustomButtons/Button.js";
 // import image from "assets/img/bg.jpg";
 // import profileImage from "assets/img/faces/avatar.jpg";
 import { Apps, CloudDownload, TocIcon } from "@material-ui/icons";
-import PersonIcon from '@material-ui/icons/Person';
-import ShowChartIcon from '@material-ui/icons/ShowChart';
+import PersonIcon from "@material-ui/icons/Person";
+import ShowChartIcon from "@material-ui/icons/ShowChart";
 import Tooltip from "@material-ui/core/Tooltip";
 
 import { Link } from "react-router-dom";
 
 import styles from "assets/jss/material-kit-react/views/componentsSections/navbarsStyle.js";
 
+import { useUserContext } from "../../../context/UserContext";
 const useStyles = makeStyles(styles);
 
 export default function SectionNavbars() {
   const classes = useStyles();
+  const { status, signIn, signOut } = useUserContext();
+  console.log(status);
   return (
     <div className={classes.section}>
-      <div id="navbar" className={classes.navbar} style={{overflow:"visible"}}>
+      <div
+        id="navbar"
+        className={classes.navbar}
+        style={{ overflow: "visible" }}
+      >
         <Header
           brand="Stonks"
           color="info"
           rightLinks={
             <List className={classes.list}>
+              {status && (
+                <ListItem className={classes.listItem}>
+                  <CustomDropdown
+                    noLiPadding
+                    buttonText="Leaderboard"
+                    buttonProps={{
+                      className: classes.navLink,
+                      color: "transparent",
+                    }}
+                    buttonIcon={Apps}
+                    dropdownList={[
+                      <Link
+                        to="/leaderboard-trader"
+                        className={classes.dropdownLink}
+                      >
+                        Traders
+                      </Link>,
+                      <Link
+                        to="/leaderboard-org"
+                        className={classes.dropdownLink}
+                      >
+                        Organizations
+                      </Link>,
+                    ]}
+                  />
+                </ListItem>
+              )}
+              {status && (
+                <ListItem className={classes.listItem}>
+                  <Button
+                    href={"/dashboard"}
+                    color="transparent"
+                    className={classes.navLink}
+                  >
+                    <ShowChartIcon className={classes.icons} /> Dashboard
+                  </Button>
+                </ListItem>
+              )}
               <ListItem className={classes.listItem}>
-                <CustomDropdown
-                  noLiPadding
-                  buttonText="Leaderboard"
-                  buttonProps={{
-                    className: classes.navLink,
-                    color: "transparent"
-                  }}
-                  buttonIcon={Apps}
-                  dropdownList={[
-                    <Link to="/leaderboard-trader" className={classes.dropdownLink}>
-                      Traders
-                    </Link>,
-                    <Link to="/leaderboard-org" className={classes.dropdownLink}>
-                      Organizations
-                    </Link>
-                  ]}
-                />
-              </ListItem>
-              <ListItem className={classes.listItem}>
-                <Button
-                  href={"/dashboard"}
-                  color="transparent"
-                  className={classes.navLink}
-                >
-                  <ShowChartIcon className={classes.icons} /> Dashboard
-                </Button>  
-              </ListItem>
-              <ListItem className={classes.listItem}>
-                <Button
-                  href={"/login-page"}
-                  color="transparent"
-                  className={classes.navLink}
-                >
-                  <PersonIcon className={classes.icons} /> Login
-                </Button>
+                {status ? (
+                  <Button
+                    href={"/login-page"}
+                    color="transparent"
+                    className={classes.navLink}
+                    onClick={signOut}
+                  >
+                    <PersonIcon className={classes.icons} />
+                    Logout
+                  </Button>
+                ) : (
+                  <Button
+                    href={"/login-page"}
+                    color="transparent"
+                    className={classes.navLink}
+                    onClick={signOut}
+                  >
+                    <PersonIcon className={classes.icons} />
+                    Login
+                  </Button>
+                )}
               </ListItem>
             </List>
           }

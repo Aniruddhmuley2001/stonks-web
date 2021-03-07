@@ -6,17 +6,25 @@ import {Alert,AlertTitle} from '@material-ui/lab';
 const useStyles=makeStyles({
    root:{
       backgroundColor:"#f2f2f2",
-      height:'50%',
-      width:'30%',
+      height:'calc(100vh*0.5)',
+      width:'calc(100vw*0.3)',
       position:'absolute',
       top:'25%',   //Set such that 2*top+height=100% to center it
       left:'35%',
       borderRadius:'12px'
    },
    flex:{
-     margin:'20px',
-     height:'200px',
-   },
+   height:'calc(100vh*0.5*0.6)',
+   margin: 'calc(100vh*0.5*0.05)',
+  },
+  title:{
+  height: 'calc(100vh*0.5*0.10)',
+  margin: 'calc(100vh*0.5*0.025)'
+ },
+ footer:{
+  height: 'calc(100vh*0.5*0.10)',
+  margin: 'calc(100vh*0.5*0.025)'
+},
    close:{
     marginTop:'5px',
     background:'#e0e0eb',
@@ -57,15 +65,16 @@ export default function TradeOrder({closeModal,action,stateSuccess}){
         <>
         <Card className={classes.root}>
         <form onSubmit={handleSubmit}>
-         <Box display="flex" flexDirection="row" flexGrow={1} style={{marginTop:'20px',marginLeft:'100px'}} justifyContent="space-around">
+        <Box  display="flex" flexDirection="column" justifyContent="space-around">
+         <Box className={classes.title} display="flex" flexDirection="row"  justifyContent="space-around">
              <Typography variant="h6">
                 Enter Details
              </Typography>
           <CloseIcon onClick={closeModal} className={classes.close}/>
         </Box>
-        <Box className={classes.flex} display="flex" flexDirection="column"  justifyContent="space-around">
-         <Box display="flex" flexDirection="row" flexGrow={1} flexWrap="wrap" justifyContent="center" style={{marginLeft:'-90px'}}>
-            <Typography display="inline" style={{marginRight:'80px',marginTop:'5px'}}> Stock </Typography>
+        <Box className={classes.flex}  display="flex" flexDirection="column"  justifyContent="space-around">
+         <Box  display="flex" flexDirection="row" flexWrap="wrap" justifyContent="center">
+            <Typography display="inline"> Stock </Typography>
             <FormControl>
         <Select
           id="stock-selection"
@@ -82,41 +91,33 @@ export default function TradeOrder({closeModal,action,stateSuccess}){
         </Select>
       </FormControl>
          </Box>
-         <Box display="flex" flexDirection="row" flexGrow={1} flexWrap="wrap" justifyContent="center">
-             <Typography display="inline" style={{marginRight:'60px',marginTop:'5px'}}> ACTION </Typography>
+         <Box display="flex" flexDirection="row"  flexWrap="wrap" justifyContent="center">
+             <Typography display="inline" > ACTION </Typography>
              <TextField id="stock-price" value={action} disabled={true}/>
         </Box>
-         <Box display="flex" flexDirection="row" flexGrow={1} flexWrap="wrap" justifyContent="center">
-             <Typography display="inline" style={{marginRight:'90px',marginTop:'5px'}}> LTP </Typography>
+         <Box display="flex" flexDirection="row"  flexWrap="wrap" justifyContent="center">
+             <Typography display="inline" > LTP </Typography>
              <TextField id="stock-price" value={stockPrice} disabled={true}/>
         </Box>
-        <Box display="flex" flexDirection="row" flexGrow={1} flexWrap="wrap" justifyContent="center"> 
-             <Typography display="inline" style={{marginRight:'56px',marginTop:'5px'}}> Quantity </Typography>
+        <Box display="flex" flexDirection="row"  flexWrap="wrap" justifyContent="center"> 
+             <Typography display="inline" > Quantity </Typography>
              <FormControl error={isError}>
              <TextField id="quantity" value={quantity} onChange={handleQuantity} error={isError}/>
              </FormControl>
         </Box>
-        <Box display="flex" flexDirection="row" flexGrow={1} flexWrap="wrap" justifyContent="center">
-             <Typography display="inline" style={{marginRight:'20px',marginTop:'5px'}}> Total Amount </Typography>
+        <Box display="flex" flexDirection="row"  flexWrap="wrap" justifyContent="center">
+             <Typography display="inline" > Total Amount </Typography>
              <FormControl>
              <TextField id="amount" value={totalAmount} disabled={true}/>
              </FormControl>
         </Box>
         </Box>
-        <Box display="flex" flexDirection="row" flexGrow={1}  justifyContent="center">
+        <Box className={classes.footer} display="flex" flexDirection="row"  justifyContent="center">
             <Button type="submit" variant="contained" color="primary"> Submit </Button>
         </Box>
-        {/*<Button
-          variant="contained"
-          color="primary"
-          className={classes.button}
-          endIcon={<Icon>send</Icon>}
-        >
-          Send
-        </Button>*/}
+        </Box>
         </form>
         </Card>
         </>
-
     )
 }
