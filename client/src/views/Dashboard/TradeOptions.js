@@ -1,20 +1,26 @@
 import React, { useState,useRef } from 'react';
-import {Modal,Card,Typography,Button,Box} from '@material-ui/core';
+import {Modal,Typography,Box} from '@material-ui/core';
 import  {makeStyles} from '@material-ui/core';
-import { blue } from '@material-ui/core/colors';
-import { setSyntheticLeadingComments } from 'typescript';
+// import { setSyntheticLeadingComments } from 'typescript';
 import {Alert,AlertTitle} from '@material-ui/lab';
 import TradeOrder from "./TradeOrder";
-import { GpsFixed } from '@material-ui/icons';
+
+import Card from "components/Card/Card.js";
+import CardBody from "components/Card/CardBody.js";
+import CardHeader from "components/Card/CardHeader.js";
+import Button from "components/CustomButtons/Button.js";
+
+import { cardTitle } from "assets/jss/material-kit-react.js";
+
 const useStyles = makeStyles({
     content:{
         margin:'20px 10px',
     },
     alert:{
         position:'fixed',
-        height:'10%',
-        width:'20%',
-        left:'40%',
+        height:'10vh',
+        width:'50vw',
+        left:'20%',
         top:'10%',
     },
     border:{
@@ -50,28 +56,37 @@ export default function TradeOptions(){
         },2000);
     }
     return(
-    <>
-    <Box display="flex" flexDirection="column" flexGrow={1} alignItems="center">
-        <Typography variant="h4" align="center" style={{margin:'20px 0px'}}>
-            Trade Options
-        </Typography>  
-        <Button className={classes.content} variant="contained"color="primary" onClick={openModal1}> Buy </Button>
-        <Button className={classes.content} variant="contained" color="secondary" onClick={openModal2}> Sell </Button>
-    </Box>
-    <Modal className={classes.modal}
-        open={open}
-        onClose={closeModal}
-        aria-labelledby="simple-modal-title"
-        aria-describedby="simple-modal-description"
-    >
-        <TradeOrder closeModal={closeModal} action={action.current} stateSuccess={checkSuccess}/>
-    </Modal>
-    {  
-        success && <Alert className={classes.alert} severity="success">
-            <AlertTitle>Success</AlertTitle>
-            <strong>Your Request will be processed soon</strong>
-        </Alert> 
-     }
-    </>
+        <>
+            <Box display="flex" flexDirection="column" flexGrow={1} alignItems="center">
+                <Card style={{width: "20rem"}}>
+                    <CardHeader color="info">
+                        <Typography  display='inline'>Trade Options</Typography>
+                    </CardHeader>
+                    <CardBody>
+                        <div className={classes.textCenter} style={{textAlign:"center"}}>
+                            <Button color="success" onClick={openModal1}>Buy </Button>
+                        </div>
+                        <div className={classes.textCenter} style={{textAlign:"center"}}>
+                            <Button color="danger" onClick={openModal2}>Sell</Button>
+                        </div>
+                    </CardBody>
+                </Card>
+            </Box>
+
+            <Modal className={classes.modal}
+                open={open}
+                onClose={closeModal}
+                aria-labelledby="simple-modal-title"
+                aria-describedby="simple-modal-description"
+            >
+                <TradeOrder closeModal={closeModal} action={action.current} stateSuccess={checkSuccess}/>
+            </Modal>
+            {  
+                success && <Alert className={classes.alert} severity="success">
+                    <AlertTitle>Success</AlertTitle>
+                    <strong>Your Request will be processed soon</strong>
+                </Alert> 
+            }
+        </>
     );
 }

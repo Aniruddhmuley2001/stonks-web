@@ -3,8 +3,6 @@ import React from "react";
 import { createBrowserHistory } from "history";
 import { Router, Route, Switch, Redirect } from "react-router-dom";
 import Components from "views/Components/Components.js";
-import LandingPage from "views/LandingPage/LandingPage.js";
-import ProfilePage from "views/ProfilePage/ProfilePage.js";
 import LoginPage from "views/LoginPage/LoginPage.js";
 import OrgLeadboard from "views/OrgLeadboard/OrgLeadboard.js";
 import TradeLeadboard from "views/TradeLeadboard/TradeLeadboard.js";
@@ -17,8 +15,6 @@ const App = () => {
     <UserContextProvider>
       <Router history={hist}>
         <Switch>
-          {/*<Route path="/landing-page" component={LandingPage} />*/}
-          {/*<Route path="/profile-page" component={ProfilePage} />*/}
           <Route path="/login-page" component={LoginPage} />
           <Route path="/leaderboard-org">
             <OrgLeadboard />

@@ -1,15 +1,11 @@
 import React from 'react';
-// import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from "@material-ui/core";
 import Paper from '@material-ui/core/Paper';
-import TableRow from '@material-ui/core/TableRow';
+// import TableRow from '@material-ui/core/TableRow';
 import TablePagination from '@material-ui/core/TablePagination';
 import SectionNavbars from "../Components/Sections/SectionNavbars";
 
-import Header from "components/Header/Header"
-import HeaderLinks from "components/Header/HeaderLinks";
-//import { TableContainer } from '@material-ui/core';
 import TableList from '../Components/TableList';
 import Footer from "components/Footer/Footer.js";
 
