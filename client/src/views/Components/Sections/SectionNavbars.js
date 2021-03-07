@@ -37,31 +37,31 @@ export default function SectionNavbars() {
           color="info"
           rightLinks={
             <List className={classes.list}>
-                <ListItem className={classes.listItem}>
-                  <CustomDropdown
-                    noLiPadding
-                    buttonText="Leaderboard"
-                    buttonProps={{
-                      className: classes.navLink,
-                      color: "transparent",
-                    }}
-                    buttonIcon={Apps}
-                    dropdownList={[
-                      <Link
-                        to="/leaderboard-trader"
-                        className={classes.dropdownLink}
-                      >
-                        Traders
-                      </Link>,
-                      <Link
-                        to="/leaderboard-org"
-                        className={classes.dropdownLink}
-                      >
-                        Organizations
-                      </Link>,
-                    ]}
-                  />
-                </ListItem>
+              <ListItem className={classes.listItem}>
+                <CustomDropdown
+                  noLiPadding
+                  buttonText="Leaderboard"
+                  buttonProps={{
+                    className: classes.navLink,
+                    color: "transparent",
+                  }}
+                  buttonIcon={Apps}
+                  dropdownList={[
+                    <Link
+                      to="/leaderboard-trader"
+                      className={classes.dropdownLink}
+                    >
+                      Traders
+                    </Link>,
+                    <Link
+                      to="/leaderboard-org"
+                      className={classes.dropdownLink}
+                    >
+                      Organizations
+                    </Link>,
+                  ]}
+                />
+              </ListItem>
               {status && (
                 <ListItem className={classes.listItem}>
                   <Button

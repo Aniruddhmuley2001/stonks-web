@@ -23,6 +23,7 @@ mongoose.connect(
 );
 
 function authToken(req, res, next) {
+  console.log("REQ HEADERS", req.headers);
   const authHeader = req.headers["authorization"];
   console.log(authHeader);
   const token = authHeader && authHeader.split(" ")[1];

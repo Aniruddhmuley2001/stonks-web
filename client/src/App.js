@@ -1,7 +1,7 @@
 import React from "react";
 
 import { createBrowserHistory } from "history";
-import { Router, Route, Switch } from "react-router-dom";
+import { Router, Route, Switch, Redirect } from "react-router-dom";
 import Components from "views/Components/Components.js";
 import LandingPage from "views/LandingPage/LandingPage.js";
 import ProfilePage from "views/ProfilePage/ProfilePage.js";
@@ -29,7 +29,8 @@ const App = () => {
           <PrivateRoute path="/dashboard">
             <Dashboard />
           </PrivateRoute>
-          <Route path="/" component={Components} />
+          <Route exact path="/" component={Components} />
+          <Redirect from="/" to="/login-page" />
         </Switch>
       </Router>
     </UserContextProvider>

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -52,6 +52,7 @@ export default function LoginPage(props) {
       }*/
       if (data) {
         if (data.accessToken) {
+          console.log("HI");
           SetAuthKey(data.accessToken);
           signIn();
           history.push("/dashboard");
@@ -68,6 +69,9 @@ export default function LoginPage(props) {
   }, 700);
   const classes = useStyles();
   const { ...rest } = props;
+  useEffect(() => {
+    status && history.push("/dashboard");
+  }, [status]);
   return (
     <>
       {FailedLoggedIn && (
