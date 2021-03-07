@@ -99,29 +99,8 @@ export default function LoginPage(props) {
                   <Card className={classes[cardAnimaton]}>
                     <form className={classes.form}>
                       <CardHeader color="info" className={classes.cardHeader}>
-                        <h4>Login</h4>
-                        <div className={classes.socialLine}>
-                          <Button
-                            justIcon
-                            href="#pablo"
-                            target="_blank"
-                            color="transparent"
-                            onClick={(e) => e.preventDefault()}
-                          >
-                            <i className={"fab fa-facebook"} />
-                          </Button>
-                          <Button
-                            justIcon
-                            href="#pablo"
-                            target="_blank"
-                            color="transparent"
-                            onClick={(e) => e.preventDefault()}
-                          >
-                            <i className={"fab fa-google-plus-g"} />
-                          </Button>
-                        </div>
+                        <h2>Login</h2>
                       </CardHeader>
-                      <p className={classes.divider}>Or Be Classical</p>
                       <CardBody>
                         <CustomInput
                           labelText="First Name..."

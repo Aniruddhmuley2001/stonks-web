@@ -30,7 +30,6 @@ export default function HeaderLinks(props) {
   const { status, signOut } = useUserContext();
   return (
     <List className={classes.list}>
-      {status && (
         <ListItem className={classes.listItem}>
           <CustomDropdown
             noLiPadding
@@ -50,7 +49,6 @@ export default function HeaderLinks(props) {
             ]}
           />
         </ListItem>
-      )}
       {status && (
         <ListItem className={classes.listItem}>
           <Button

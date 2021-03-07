@@ -20,12 +20,12 @@ const App = () => {
           {/*<Route path="/landing-page" component={LandingPage} />*/}
           {/*<Route path="/profile-page" component={ProfilePage} />*/}
           <Route path="/login-page" component={LoginPage} />
-          <PrivateRoute path="/leaderboard-org">
+          <Route path="/leaderboard-org">
             <OrgLeadboard />
-          </PrivateRoute>
-          <PrivateRoute path="/leaderboard-trader">
+          </Route>
+          <Route path="/leaderboard-trader">
             <TradeLeadboard />
-          </PrivateRoute>
+          </Route>
           <PrivateRoute path="/dashboard">
             <Dashboard />
           </PrivateRoute>
