@@ -2,6 +2,7 @@ import React from "react";
 import TableList from "../Components/TableList";
 import  {makeStyles} from '@material-ui/core';
 import {Paper,TablePagination} from "@material-ui/core"
+import * as axios from 'axios'
 
 const useStyles = makeStyles({
     root: {
@@ -36,6 +37,17 @@ const columns = [
     createData('E', 25, 4, 100),
     createData('C', 40, 3, 120),
   ];
+  
+
+  axios.interceptors.request.use(
+    (config) => {
+      config.headers.authorization = `Bearer ${localStorage.getItem("AUTH_KEY")}`;
+      return config;
+    },
+    (error) => {
+      return Promise.reject(error);
+    }
+  );
 export default function RecentTransactionList() {
 const classes = useStyles();
   const [page, setPage] = React.useState(0);
@@ -45,10 +57,14 @@ const classes = useStyles();
     setPage(newPage);
   };
 
+
+  
+
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+
     return(
         <>
         <Paper classes={classes.root}>

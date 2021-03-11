@@ -6,6 +6,7 @@ const Stock = require("./stocks");
 const Holding = require("./holdings");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
+const { response } = require("express");
 const app = express();
 require("dotenv").config();
 
@@ -88,8 +89,9 @@ app.post("/signIn", async (req, res) => {
 });
 
 app.post("/buy", authToken, async (req, res) => {
-  let { index, quantity } = req.body;
+  let {index,quantity} = req.body
 
+  console.log(index)
   if (req.user && index && quantity) {
     let stock = await Stock.findOne({ index: index }).exec();
     quantity = parseInt(quantity);
@@ -192,7 +194,7 @@ app.get("/stocks", async (req, res) => {
 app.get("/holdings", authToken, async (req, res) => {
   if (req.user) {
     let user = await User.findOne({ username: req.user }).exec();
-    let holding = await Holding.find({ userId: user._id }).exec();
+    let holding = await Holding.find({ userId: user._id }).populate('stockId').exec();
 
     res.json(holding);
   } else {
@@ -231,6 +233,24 @@ app.post("/insertStocks", async (req, res) => {
 
   res.send("Successfull");
 });
+
+app.get("/leaderboard",authToken,async (req,res)=>{
+
+  let leaderboard = await Holding.find().populate(['userId','stockId'])
+  let result  = []
+  for(let i = 0 ;i<leaderboard.length;i++){
+    let x = {
+      username:  leaderboard[i].userId.username,
+      quantity : leaderboard[i].quantity,
+      price : leaderboard[i].stockId.price
+    }
+    result.push(x)
+  }
+
+
+  res.json(result)
+
+})
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });

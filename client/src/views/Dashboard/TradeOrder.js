@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {FormControl, MenuItem, Box, Card, Typography, makeStyles, TextField, Button} from "@material-ui/core";
+import * as formData from 'form-data'
+import * as axios from 'axios'
 const useStyles=makeStyles({
   root:{
     backgroundColor:"#f2f2f2",
@@ -30,16 +32,32 @@ const useStyles=makeStyles({
     },
   }
 });
-const stocks=["APPLE", "AMAZON", "MICROSOFT", "RELIANCE", "TCS"]
-const stockPrice=25;
-const totalAmount=1000;
+
+
+axios.interceptors.request.use(
+  (config) => {
+    config.headers.authorization = `Bearer ${localStorage.getItem("AUTH_KEY")}`;
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
 export default function TradeOrder({closeModal,action,stateSuccess}){
   const classes=useStyles();
-  const [currentStock,setCurrentStock]=useState(stocks[0]);
+  const [currentStock,setCurrentStock]=useState("");
   const [quantity,setQuantity]=useState(0);
   const [isError,setIsError]=useState(null);
+  const [stocks, setStocks] = useState([])
   const handleChange=(event)=>{
-      setCurrentStock(event.target.value);
+
+      for(let i =0;i<stocks.length;i++){
+        if(event.target.value == stocks[i].index){ 
+          setCurrentStock(stocks[i]);
+          break;
+        }
+      }
   }
 
   const handleSubmit=(event)=>{
@@ -49,18 +67,39 @@ export default function TradeOrder({closeModal,action,stateSuccess}){
     }
     else{
       setIsError('');
-      // const formData = new FormData();
-      // formData.append('stock', 'Apple');
-      // console.log(formData);
-      stateSuccess(true);
+      if(action == "BUY"){
+      axios.post('http://localhost:8080/buy',{index:currentStock.index,quantity:quantity}).then((response)=>{
+        console.log(response);
+        if(response.data == "Successfull"){
+          stateSuccess(true);
+        }
+
+      })
+    }else{
+      axios.post('http://localhost:8080/sell',{index:currentStock.index,quantity:quantity}).then((response)=>{
+        console.log(response);
+        if(response.data == "Successfull"){
+          stateSuccess(true);
+        }
+
+      })
+    }
     }
   }
   useEffect(()=>{
     if(isError==='') closeModal();
+
+    axios.get('http://localhost:8080/stocks').then(function (response){
+      console.log(response.data)
+      setStocks(response.data)
+      setCurrentStock(response.data[0])
+    })
   },[isError])
   const handleQuantity=(event)=>{
       setQuantity(event.target.value);
   }
+
+  console.log(currentStock.price)
   return(
     <div style={{display:'flex', justifyContent:'center'}}>
       <Card className={classes.root}>
@@ -79,14 +118,14 @@ export default function TradeOrder({closeModal,action,stateSuccess}){
                       id="stocks"
                       select
                       label="Stock"
-                      value={currentStock}
+                      value={currentStock != ""? currentStock.index:""}
                       onChange={handleChange}
                       variant="outlined"
                     >
                       {
                         stocks.map((stock)=> {
                             return(
-                              <MenuItem value={stock} key={stock}> {stock} </MenuItem>
+                              <MenuItem value={stock.index} key={stock.index}> {stock.index} </MenuItem>
                             );
                         })
                       }
@@ -108,10 +147,11 @@ export default function TradeOrder({closeModal,action,stateSuccess}){
                   <TextField
                     id="stock-price"
                     label="Price"
-                    defaultValue={stockPrice}
+                    value={currentStock != ""? currentStock.price:0}
                     InputProps={{
                       readOnly: true,
                     }}
+
                     variant="outlined"
                   />
                 </Box>
@@ -122,9 +162,11 @@ export default function TradeOrder({closeModal,action,stateSuccess}){
                       id="quantity"
                       label="Quantity"
                       type="number"
+                      value={quantity}
                       InputLabelProps={{
                         shrink: true,
                       }}
+                      onChange={(e)=>{setQuantity(e.target.value)}}
                       variant="outlined"
                     />
                   </FormControl>
@@ -134,7 +176,7 @@ export default function TradeOrder({closeModal,action,stateSuccess}){
                     <TextField
                       id="total-price"
                       label="Total"
-                      defaultValue={totalAmount}
+                      value={currentStock != ""? currentStock.price * quantity:0}
                       InputProps={{
                         readOnly: true,
                       }}
