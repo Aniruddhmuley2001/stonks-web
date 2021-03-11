@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react';
-import {Box, Typography} from '@material-ui/core';
+import {Box, Typography,CircularProgress} from '@material-ui/core';
 import  {makeStyles} from '@material-ui/core';
 
 import Card from "components/Card/Card.js";
@@ -36,10 +36,13 @@ export default function ProfilePage(){
     const classes=useStyles();
     const [user, setUser] = useState({})
     const [totalBalance, setTotalBalance] = useState(0)
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
+        let true1 = false
         axios.get("http://localhost:8080/verifyToken").then((response)=>{
             setUser(response.data)
+            true1=true
         })
 
         axios.get("http://localhost:8080/holdings").then((response)=>{
@@ -47,10 +50,16 @@ export default function ProfilePage(){
             for(let i =0;i<response.data.length;i++){
                 total += response.data[i].stockId.price* response.data[i].quantity
             }
-
             setTotalBalance(total)
+            if(true1){
+                setLoading(false)
+            }
         })
     }, [])
+
+    if(loading){
+        return <CircularProgress/>
+      }
     return(
         <Box display="flex" flexDirection="column" flexGrow={1} alignItems="center">
             <Card style={{width: "20rem"}}>

@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from "react";
 import TableList from "../Components/TableList";
-import  {makeStyles} from '@material-ui/core';
+import  {CircularProgress, makeStyles} from '@material-ui/core';
 import {Paper,TablePagination} from "@material-ui/core"
 import * as axios from 'axios'
 
@@ -47,6 +47,7 @@ const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [holdings, setHoldings] = useState([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     console.log("Hello")
@@ -58,6 +59,8 @@ const classes = useStyles();
           rows.push(createData(response.data[i].stockId.index,response.data[i].stockId.price,response.data[i].quantity,response.data[i].stockId.price*response.data[i].quantity))
       }
       setHoldings(rows)
+
+      setLoading(false);
     })
   },[])
 
@@ -72,6 +75,10 @@ const classes = useStyles();
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+
+  if(loading){
+    return <CircularProgress/>
+  }
 
     return(
         <>
