@@ -39,25 +39,16 @@ export default function SectionPills() {
                     tabContent: (
                       <span>
                         <p>
-                          Collaboratively administrate empowered markets via
-                          plug-and-play networks. Dynamically procrastinate B2C
-                          users after installed base benefits.
+                        ‘Stonks’, is a one of its kind event, to emulate an experience of trading in a virtual stock market, integrating it with the concept of developing some interesting business models and pitches. 
+                        </p>
+                        <br/>
+                        <p>
+                        This 3-day long dynamic event, with the company owners and traders as the participants, will be full of enthusiasm, eagerness and jam packed with fun. During the 3 days, the companies will give their strategies to account for stock price variation and then the one with profitable shares will be declared as the winner.
                         </p>
                         <br />
                         <p>
-                          Dramatically visualize customer directed convergence
-                          without revolutionary ROI. Collaboratively
-                          administrate empowered markets via plug-and-play
-                          networks. Dynamically procrastinate B2C users after
-                          installed base benefits.
-                        </p>
-                        <br />
-                        <p>
-                          Dramatically visualize customer directed convergence
-                          without revolutionary ROI. Collaboratively
-                          administrate empowered markets via plug-and-play
-                          networks. Dynamically procrastinate B2C users after
-                          installed base benefits.
+                        The event serves as a perfect platform for those having some experience in stock trading as well as those who want to kick start their journey in this domain and don’t know how to. 
+                        So get ready to bring out your inner brokers and experience something you’ve never experienced before!
                         </p>
                       </span>
                     )
@@ -90,26 +81,9 @@ export default function SectionPills() {
                     tabContent: (
                       <span>
                         <p>
-                          Collaboratively administrate empowered markets via
-                          plug-and-play networks. Dynamically procrastinate B2C
-                          users after installed base benefits.
+                          Will be updated soon...
                         </p>
                         <br />
-                        <p>
-                          Dramatically visualize customer directed convergence
-                          without revolutionary ROI. Collaboratively
-                          administrate empowered markets via plug-and-play
-                          networks. Dynamically procrastinate B2C users after
-                          installed base benefits.
-                        </p>
-                        <br />
-                        <p>
-                          Dramatically visualize customer directed convergence
-                          without revolutionary ROI. Collaboratively
-                          administrate empowered markets via plug-and-play
-                          networks. Dynamically procrastinate B2C users after
-                          installed base benefits.
-                        </p>
                       </span>
                     )
                   }

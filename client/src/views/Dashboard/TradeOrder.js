@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {FormControl, InputLabel, Select, MenuItem, Box, Card, Typography, makeStyles, TextField, Button} from "@material-ui/core";
-// import Icon from '@material-ui/core/Icon';
-// import  CloseIcon  from "@material-ui/icons/Close";
-// import {Alert,AlertTitle} from '@material-ui/lab';
+import {FormControl, MenuItem, Box, Card, Typography, makeStyles, TextField, Button} from "@material-ui/core";
 const useStyles=makeStyles({
   root:{
     backgroundColor:"#f2f2f2",
@@ -52,6 +49,9 @@ export default function TradeOrder({closeModal,action,stateSuccess}){
     }
     else{
       setIsError('');
+      // const formData = new FormData();
+      // formData.append('stock', 'Apple');
+      // console.log(formData);
       stateSuccess(true);
     }
   }
@@ -75,7 +75,6 @@ export default function TradeOrder({closeModal,action,stateSuccess}){
                 </Box>
                 <Box display="flex" flexDirection="row" flexWrap="wrap" justifyContent="center" style={{padding:"2%"}}>
                   <FormControl>
-                    {/*<Typography display="inline"> Stock </Typography>*/}
                     <TextField
                       id="stocks"
                       select
@@ -95,8 +94,6 @@ export default function TradeOrder({closeModal,action,stateSuccess}){
                   </FormControl>
                 </Box>
                 <Box display="flex" flexDirection="row"  flexWrap="wrap" justifyContent="center" style={{padding:"2%"}}>
-                  {/*<Typography display="inline"> ACTION </Typography>
-                    <TextField id="stock-price" value={action} disabled={true}/>*/}
                   <TextField
                     id="stock-price"
                     label="Action"
@@ -108,8 +105,6 @@ export default function TradeOrder({closeModal,action,stateSuccess}){
                   />
                 </Box>
                 <Box display="flex" flexDirection="row"  flexWrap="wrap" justifyContent="center" style={{padding:"2%"}}>
-                  {/*<Typography display="inline" > LTP </Typography>
-                  <TextField id="stock-price" value={stockPrice} disabled={true}/>*/}
                   <TextField
                     id="stock-price"
                     label="Price"
@@ -121,9 +116,7 @@ export default function TradeOrder({closeModal,action,stateSuccess}){
                   />
                 </Box>
                 <Box display="flex" flexDirection="row"  flexWrap="wrap" justifyContent="center" style={{padding:"2%"}}> 
-                  {/*<Typography display="inline" > Quantity </Typography>*/}
                   <FormControl error={isError}>
-                    {/*<TextField id="quantity" value={quantity} onChange={handleQuantity} error={isError}/>*/}
                     <TextField
                       required
                       id="quantity"
@@ -137,9 +130,7 @@ export default function TradeOrder({closeModal,action,stateSuccess}){
                   </FormControl>
                 </Box>
                 <Box display="flex" flexDirection="row"  flexWrap="wrap" justifyContent="center" style={{padding:"2%"}}>
-                  {/*<Typography display="inline" > Total Amount </Typography>*/}
                   <FormControl>
-                    {/*<TextField id="amount" value={totalAmount} disabled={true}/>*/}
                     <TextField
                       id="total-price"
                       label="Total"

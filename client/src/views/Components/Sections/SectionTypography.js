@@ -8,16 +8,8 @@ import { Typography } from "@material-ui/core";
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import Small from "components/Typography/Small.js";
-import Danger from "components/Typography/Danger.js";
-import Warning from "components/Typography/Warning.js";
-import Success from "components/Typography/Success.js";
-import Info from "components/Typography/Info.js";
-import Primary from "components/Typography/Primary.js";
-import Muted from "components/Typography/Muted.js";
-import Quote from "components/Typography/Quote.js";
 
-import image from "assets/img/faces/avatar.jpg";
+import image from "assets/img/sponsors/Sponsor_Edudictive.jpg";
 
 import styles from "assets/jss/material-kit-react/views/componentsSections/typographyStyle.js";
 
@@ -37,7 +29,7 @@ export default function SectionTypography() {
           <br />
           <GridContainer>
             <GridItem xs={12} sm={2}>
-              <h4>Rounded Image</h4>
+              <h4>Edudictive</h4>
               <img
                 src={image}
                 alt="..."
@@ -49,7 +41,7 @@ export default function SectionTypography() {
               <img
                 src={image}
                 alt="..."
-                className={classes.imgRoundedCircle + " " + classes.imgFluid}
+                className={classes.imgRounded + " " + classes.imgFluid}
               />
             </GridItem>
             <GridItem xs={12} sm={2} className={classes.marginLeft}>
@@ -57,13 +49,7 @@ export default function SectionTypography() {
               <img
                 src={image}
                 alt="..."
-                className={
-                  classes.imgRaised +
-                  " " +
-                  classes.imgRounded +
-                  " " +
-                  classes.imgFluid
-                }
+                className={classes.imgRounded + " " + classes.imgFluid}
               />
             </GridItem>
             <GridItem xs={12} sm={2} className={classes.marginLeft}>
@@ -71,13 +57,7 @@ export default function SectionTypography() {
               <img
                 src={image}
                 alt="..."
-                className={
-                  classes.imgRaised +
-                  " " +
-                  classes.imgRoundedCircle +
-                  " " +
-                  classes.imgFluid
-                }
+                className={classes.imgRounded + " " + classes.imgFluid}
               />
             </GridItem>
           </GridContainer>

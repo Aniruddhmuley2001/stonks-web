@@ -7,12 +7,9 @@ import Header from "components/Header/Header.js";
 import CustomDropdown from "components/CustomDropdown/CustomDropdown.js";
 import Button from "components/CustomButtons/Button.js";
 
-// import image from "assets/img/bg.jpg";
-// import profileImage from "assets/img/faces/avatar.jpg";
-import { Apps, CloudDownload, TocIcon } from "@material-ui/icons";
+import { Apps } from "@material-ui/icons";
 import PersonIcon from "@material-ui/icons/Person";
 import ShowChartIcon from "@material-ui/icons/ShowChart";
-import Tooltip from "@material-ui/core/Tooltip";
 
 import { Link } from "react-router-dom";
 

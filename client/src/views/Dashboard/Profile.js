@@ -27,20 +27,6 @@ export default function ProfilePage(){
     const classes=useStyles();
     return(
         <Box display="flex" flexDirection="column" flexGrow={1} alignItems="center">
-            {/*<Card  className={classes.root}>
-                <Box className={classes.content}>     
-                    <Typography display='inline'>Team:</Typography>
-                    <Typography  display='inline'> Stonks</Typography>
-                </Box>
-                <Box className={classes.content}>     
-                    <Typography  display='inline'>ID:</Typography>
-                    <Typography  display='inline'> 123456</Typography>
-                </Box>
-                <Box className={classes.content}>     
-                    <Typography display='inline'>Current Balance:</Typography>
-                    <Typography  display='inline'> 1234567</Typography>
-                </Box>
-    </Card>*/}
             <Card style={{width: "20rem"}}>
                 <CardHeader color="info">
                     <Typography  display='inline'>Profile</Typography>

@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import {Box, Grid, Typography} from "@material-ui/core";
 import SectionNavbars from "../Components/Sections/SectionNavbars";
-import RecentTransactionList from "./RecentTransactionList";
+import Holdings from "./Holdings";
 import Profile from './Profile';
 import Footer from "../../components/Footer/Footer.js";
 import TradeOptions from "./TradeOptions";
@@ -24,11 +24,6 @@ export default function Dashboard(){
       <>
          <SectionNavbars/>
          <Box display="flex" flexDirection="column" >   
-            {/*<Box display="flex" flexDirection="row" alignItems="center">
-               <Profile/>
-               <TradeOptions/>
-   </Box>*/}
-
             <Grid container spacing={2}>
                <Grid item xs={12} sm={6}>
                   <Profile />
@@ -40,9 +35,9 @@ export default function Dashboard(){
 
             <Box display="flex" flexDirection="column" flexGrow={1}>
                <Typography variant="h4" align="center" style={{margin:'20px 0px'}}>
-                  Recent Transactions
+                  Holdings
                </Typography>
-               <RecentTransactionList/>
+               <Holdings/>
             </Box>
          </Box>
          <Footer/>
