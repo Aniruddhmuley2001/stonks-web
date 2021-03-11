@@ -47,3 +47,14 @@ export async function SendUserDetails(req) {
 }
 
 //axios.post(URL, data, config).then(...)
+export async function FetchLeaderboard() {
+  console.log("HI");
+  const url = BASEURL + "/leaderboard";
+  try {
+    const { data } = await axios.get(url);
+    console.log(data);
+    return { data, error: false };
+  } catch {
+    return { data: null, error: true };
+  }
+}

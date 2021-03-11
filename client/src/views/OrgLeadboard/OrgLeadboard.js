@@ -1,39 +1,39 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
-import Paper from '@material-ui/core/Paper';
-import TablePagination from '@material-ui/core/TablePagination';
-import TableList from '../Components/TableList';
+import Paper from "@material-ui/core/Paper";
+import TablePagination from "@material-ui/core/TablePagination";
+import TableList from "../Components/TableList";
 import SectionNavbars from "../Components/Sections/SectionNavbars";
 import Footer from "../../components/Footer/Footer.js";
 
 const columns = [
-  { id: 'position', label: 'Position', minWidth: 80, align: 'center' },
-  { id: 'name', label: 'Name', minWidth: 120, align: 'center' },
+  { id: "position", label: "Position", minWidth: 80, align: "center" },
+  { id: "name", label: "Participant", minWidth: 120, align: "center" },
   {
-    id: 'price',
-    label: 'Share\u00a0Price',
+    id: "holdings",
+    label: "Total holdings",
     minWidth: 100,
-    align: 'center',
-    format: (value) => value.toLocaleString('en-US'),
+    align: "center",
+    format: (value) => value.toLocaleString("en-US"),
   },
 ];
 
-function createData(position, name, price) {
-  return { position, name, price };
+function createData(position, name, holdings) {
+  return { position, name, holdings };
 }
 
 const rows = [
-  createData(1, 'A', 10),
-  createData(2, 'B', 11),
-  createData(3, 'C', 14),
-  createData(4, 'D', 12),
-  createData(5, 'E', 13),
+  createData(1, "A", 10),
+  createData(2, "B", 11),
+  createData(3, "C", 14),
+  createData(4, "D", 12),
+  createData(5, "E", 13),
 ];
 
 const useStyles = makeStyles({
   root: {
-    width: '100%',
+    width: "100%",
   },
   container: {
     maxHeight: 440,
@@ -56,21 +56,27 @@ export default function OrgLeadboard() {
 
   return (
     <Paper className={classes.root}>
-        <SectionNavbars />
-        <Typography variant="h4" align="center" style={{margin:'20px 0px'}}>
-          Organizations Leaderboard
-        </Typography>         
-        <TableList container={classes.container} columns={columns} rows={rows} rowsPerPage={rowsPerPage} page={page}/>
-        <TablePagination
-          rowsPerPageOptions={[10, 25, 100]}
-          component="div"
-          count={rows.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onChangePage={handleChangePage}
-          onChangeRowsPerPage={handleChangeRowsPerPage}
-        />
-        <Footer />
+      <SectionNavbars />
+      <Typography variant="h4" align="center" style={{ margin: "20px 0px" }}>
+        Organizations Leaderboard
+      </Typography>
+      <TableList
+        container={classes.container}
+        columns={columns}
+        rows={rows}
+        rowsPerPage={rowsPerPage}
+        page={page}
+      />
+      <TablePagination
+        rowsPerPageOptions={[10, 25, 100]}
+        component="div"
+        count={rows.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onChangePage={handleChangePage}
+        onChangeRowsPerPage={handleChangeRowsPerPage}
+      />
+      <Footer />
     </Paper>
   );
 }
