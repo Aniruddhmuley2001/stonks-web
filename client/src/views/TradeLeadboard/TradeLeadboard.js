@@ -71,12 +71,16 @@ export default function OrgLeadboard() {
         rows.push([counter, key, fields[key]]);
       }
       rows.sort((a, b) => {
-        if (a[2] < b[2]) return -1;
-        else return 1;
+        if (a[2] < b[2]) return 1;
+        else return -1;
       });
       const finalData = [];
-      rows.forEach((data) => {
-        finalData.push({ position: data[0], name: data[1], holdings: data[2] });
+      rows.forEach((data, index) => {
+        finalData.push({
+          position: index + 1,
+          name: data[1],
+          holdings: data[2],
+        });
       });
       setRows(finalData);
     });
