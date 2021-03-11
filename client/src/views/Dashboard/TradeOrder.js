@@ -72,6 +72,7 @@ export default function TradeOrder({closeModal,action,stateSuccess}){
         console.log(response);
         if(response.data == "Successfull"){
           stateSuccess(true);
+          window.location.reload()
         }
 
       })
@@ -80,6 +81,7 @@ export default function TradeOrder({closeModal,action,stateSuccess}){
         console.log(response);
         if(response.data == "Successfull"){
           stateSuccess(true);
+          window.location.reload()
         }
 
       })

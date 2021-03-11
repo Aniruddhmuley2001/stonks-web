@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import {Box, Typography} from '@material-ui/core';
 import  {makeStyles} from '@material-ui/core';
 
@@ -8,6 +8,7 @@ import CardHeader from "components/Card/CardHeader.js";
 // import Button from "Components/CustomButtons/Button.js";
 
 import { cardTitle } from "assets/jss/material-kit-react.js";
+import axios from 'axios';
 
 const useStyles = makeStyles({
     root:{
@@ -22,9 +23,34 @@ const useStyles = makeStyles({
     },
     cardTitle,
   });
-
+  axios.interceptors.request.use(
+    (config) => {
+      config.headers.authorization = `Bearer ${localStorage.getItem("AUTH_KEY")}`;
+      return config;
+    },
+    (error) => {
+      return Promise.reject(error);
+    }
+  );
 export default function ProfilePage(){
     const classes=useStyles();
+    const [user, setUser] = useState({})
+    const [totalBalance, setTotalBalance] = useState(0)
+
+    useEffect(() => {
+        axios.get("http://localhost:8080/verifyToken").then((response)=>{
+            setUser(response.data)
+        })
+
+        axios.get("http://localhost:8080/holdings").then((response)=>{
+            let total=0
+            for(let i =0;i<response.data.length;i++){
+                total += response.data[i].stockId.price* response.data[i].quantity
+            }
+
+            setTotalBalance(total)
+        })
+    }, [])
     return(
         <Box display="flex" flexDirection="column" flexGrow={1} alignItems="center">
             <Card style={{width: "20rem"}}>
@@ -34,15 +60,19 @@ export default function ProfilePage(){
                 <CardBody>
                     <Box className={classes.content}>     
                         <Typography display='inline'>Trader:</Typography>
-                        <Typography  display='inline'> Stonks</Typography>
+                        <Typography  display='inline'> {user.username}</Typography>
                     </Box>
                     <Box className={classes.content}>     
-                        <Typography  display='inline'>ID:</Typography>
-                        <Typography  display='inline'> 123456</Typography>
+                        <Typography display='inline'>Total Holding Balance:</Typography>
+                        <Typography  display='inline'> {totalBalance}</Typography>
                     </Box>
                     <Box className={classes.content}>     
-                        <Typography display='inline'>Current Balance:</Typography>
-                        <Typography  display='inline'> 1234567</Typography>
+                        <Typography display='inline'>Total credits left:</Typography>
+                        <Typography  display='inline'> {user.credits}</Typography>
+                    </Box>
+                    <Box className={classes.content}>     
+                        <Typography display='inline'>Total Balance</Typography>
+                        <Typography  display='inline'> {user.credits + totalBalance}</Typography>
                     </Box>
                 </CardBody>
             </Card>
