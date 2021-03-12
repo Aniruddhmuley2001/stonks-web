@@ -9,7 +9,8 @@ import { Typography } from "@material-ui/core";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 
-import image from "assets/img/sponsors/Sponsor_Edudictive.jpg";
+import image1 from "assets/img/sponsors/ssip.png";
+import image2 from "assets/img/sponsors/Sponsor_Edudictive.jpg";
 
 import styles from "assets/jss/material-kit-react/views/componentsSections/typographyStyle.js";
 
@@ -28,34 +29,19 @@ export default function SectionTypography() {
           </div>
           <br />
           <GridContainer>
-            <GridItem xs={12} sm={2}>
+            <GridItem xs={12} sm={6} className={classes.marginLeft}>
+              <h4>SSIP Gujarat</h4>
+              <img
+                src={image1}
+                alt="..."
+                className={classes.imgRounded + " " + classes.imgFluid}
+              />
+            </GridItem>
+            <GridItem xs={12} sm={6}>
               <h4>Edudictive</h4>
               <img
-                src={image}
-                alt="..."
-                className={classes.imgRounded + " " + classes.imgFluid}
-              />
-            </GridItem>
-            <GridItem xs={12} sm={2} className={classes.marginLeft}>
-              <h4>Circle Image</h4>
-              <img
-                src={image}
-                alt="..."
-                className={classes.imgRounded + " " + classes.imgFluid}
-              />
-            </GridItem>
-            <GridItem xs={12} sm={2} className={classes.marginLeft}>
-              <h4>Rounded Raised</h4>
-              <img
-                src={image}
-                alt="..."
-                className={classes.imgRounded + " " + classes.imgFluid}
-              />
-            </GridItem>
-            <GridItem xs={12} sm={2} className={classes.marginLeft}>
-              <h4>Circle Raised</h4>
-              <img
-                src={image}
+                src={image2}
+                style={{height:"90px"}}
                 alt="..."
                 className={classes.imgRounded + " " + classes.imgFluid}
               />
