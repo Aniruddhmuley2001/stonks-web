@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Link as RouterLink } from 'react-router-dom';
 
@@ -28,6 +28,7 @@ import image from "assets/img/stock-background-3.jpg";
 
 import { SendUserDetails, SetAuthKey } from "../../utils/helper";
 import { useUserContext } from "context/UserContext";
+import { Snackbar } from "@material-ui/core";
 import { Typography } from "@material-ui/core";
 
 const LinkBehavior = React.forwardRef((props, ref) => (
@@ -40,6 +41,7 @@ export default function LoginPage(props) {
   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
   const [FailedLoggedIn, setFailedLoggedIn] = React.useState(false);
   const { status, signIn } = useUserContext();
+  const [failureMsg, setfailureMsg] = useState("")
   const history = useHistory();
   const nameRef = useRef(null);
   const emailRef = useRef(null);
@@ -65,6 +67,7 @@ export default function LoginPage(props) {
           console.log(status, "LOGGING_IN");
           console.log(status, "LOGGED_IN");
         } else {
+          setfailureMsg(data)
           setFailedLoggedIn(true);
         }
       }
@@ -80,16 +83,14 @@ export default function LoginPage(props) {
   }, [status]);
   return (
     <>
-      {FailedLoggedIn && 
-        // <Alert variant="outlined" severity="error" onClose={true}>
-        //   <AlertTitle> Logged In Fail</AlertTitle>
-        //   <strong>Enter Correct Credentials</strong>
-        // </Alert>
-        <Alert className={classes.alert} severity="danger">
-            <AlertTitle>Invalid Login</AlertTitle>
-            <strong>Please try with valid credentials, or SignUp</strong>
-        </Alert> 
-      }
+      {FailedLoggedIn && (
+        <Snackbar anchorOrigin={{vertical: "bottom",horizontal: "center" }} onClose={()=>{setFailedLoggedIn(false)}} open={FailedLoggedIn}>
+          <Alert severity="error" onClose={()=>{setFailedLoggedIn(false)}}>
+            <AlertTitle> Log In Failed</AlertTitle>
+            <strong>{failureMsg}</strong>
+          </Alert>
+        </Snackbar>
+      )}
       <div>
         <Header
           absolute
