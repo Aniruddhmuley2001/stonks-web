@@ -47,20 +47,20 @@ export default function LoginPage(props) {
       password,
     };
     console.log(req);
-    // SendUserDetails(req).then(({ data, err }) => {
-    //   if (data) {
-    //     if (data.accessToken) {
-    //       console.log("HI");
-    //       SetAuthKey(data.accessToken);
-    //       signIn();
-    //       history.push("/dashboard");
-    //       console.log(status, "LOGGING_IN");
-    //       console.log(status, "LOGGED_IN");
-    //     } else {
-    //       setFailedLoggedIn(true);
-    //     }
-    //   }
-    // });
+    SendUserDetails(req).then(({ data, err }) => {
+      if (data) {
+        if (data.accessToken) {
+          console.log("HI");
+          SetAuthKey(data.accessToken);
+          signIn();
+          history.push("/dashboard");
+          console.log(status, "LOGGING_IN");
+          console.log(status, "LOGGED_IN");
+        } else {
+          setFailedLoggedIn(true);
+        }
+      }
+    });
   };
   setTimeout(function () {
     setCardAnimation("");
