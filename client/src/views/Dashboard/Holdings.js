@@ -1,7 +1,8 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import TableList from "../Components/TableList";
-import  {makeStyles} from '@material-ui/core';
+import  {CircularProgress, makeStyles} from '@material-ui/core';
 import {Paper,TablePagination} from "@material-ui/core"
+import * as axios from 'axios'
 
 const useStyles = makeStyles({
     root: {
@@ -29,34 +30,64 @@ const columns = [
     return { organization, sharePrice, units, amount };
   }
   
-  const rows = [
-    createData('A', 25, 2, 50),
-    createData('B', 30, 5, 150),
-    createData('D', 20, 2, 40),
-    createData('E', 25, 4, 100),
-    createData('C', 40, 3, 120),
-  ];
+  let rows = [];
+  
+
+  axios.interceptors.request.use(
+    (config) => {
+      config.headers.authorization = `Bearer ${localStorage.getItem("AUTH_KEY")}`;
+      return config;
+    },
+    (error) => {
+      return Promise.reject(error);
+    }
+  );
 export default function RecentTransactionList() {
 const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [holdings, setHoldings] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    console.log("Hello")
+    axios.get("http://localhost:8080/holdings").then((response)=>{
+      
+      for(let i =0;i<response.data.length;i++){
+
+        console.log(response.data[i])
+          rows.push(createData(response.data[i].stockId.index,response.data[i].stockId.price,response.data[i].quantity,response.data[i].stockId.price*response.data[i].quantity))
+      }
+      setHoldings(rows)
+
+      setLoading(false);
+    })
+  },[])
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
 
+
+  
+
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+
+  if(loading){
+    return <CircularProgress/>
+  }
+
     return(
         <>
         <Paper classes={classes.root}>
-            <TableList container={classes.container} columns={columns} rows={rows} rowsPerPage={rowsPerPage} page={page}/>
+            <TableList container={classes.container} columns={columns} rows={holdings} rowsPerPage={rowsPerPage} page={page}/>
             <TablePagination
                 rowsPerPageOptions={[10, 25, 100]}
                 component="div"
-                count={rows.length}
+                count={holdings.length}
                 rowsPerPage={rowsPerPage}
                 page={page}
                 onChangePage={handleChangePage}
