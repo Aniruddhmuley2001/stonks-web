@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
@@ -6,6 +6,7 @@ import TablePagination from "@material-ui/core/TablePagination";
 import TableList from "../Components/TableList";
 import SectionNavbars from "../Components/Sections/SectionNavbars";
 import Footer from "../../components/Footer/Footer.js";
+import * as axios from 'axios'
 
 const columns = [
   { id: "index", label: "Index", minWidth: 80, align: "center" },
@@ -43,8 +44,18 @@ const useStyles = makeStyles({
 export default function OrgLeadboard() {
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
+  const [stocks, setStocks] = useState([])
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
+  useEffect(() => {
+    axios.get("http://localhost:8080/stocks").then((response)=>{
+      let row =[]
+    for(let i =0;i<response.data.length;i++ ){
+      row.push(createData(response.data[i].index,response.data[i].org,response.data[i].price));
+    }
+    setStocks(row)
+    })
+  }, [])
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -63,14 +74,14 @@ export default function OrgLeadboard() {
       <TableList
         container={classes.container}
         columns={columns}
-        rows={rows}
+        rows={stocks}
         rowsPerPage={rowsPerPage}
         page={page}
       />
       <TablePagination
         rowsPerPageOptions={[10, 25, 100]}
         component="div"
-        count={rows.length}
+        count={stocks.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onChangePage={handleChangePage}

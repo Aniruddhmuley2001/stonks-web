@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect,useState } from "react";
 import { useHistory } from "react-router-dom";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -23,14 +23,20 @@ import styles from "assets/jss/material-kit-react/views/loginPage.js";
 
 import image from "assets/img/stock-background-3.jpg";
 
-import { SendUserDetails, SetAuthKey } from "../../utils/helper";
+import { SendUserDetails, SetAuthKey,SignUp } from "../../utils/helper";
 import { useUserContext } from "context/UserContext";
+import { Snackbar } from "@material-ui/core";
 const useStyles = makeStyles(styles);
 
 export default function LoginPage(props) {
   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
   const [FailedLoggedIn, setFailedLoggedIn] = React.useState(false);
+  const [username, setUsername] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
   const { status, signIn } = useUserContext();
+  const [failureMsg, setfailureMsg] = useState("")
   const history = useHistory();
   const nameRef = useRef(null);
   const emailRef = useRef(null);
@@ -38,32 +44,39 @@ export default function LoginPage(props) {
   const confirmPassRef = useRef(null);
   const handleSubmit = (event) => {
     event.preventDefault();
-    const name = nameRef?.current?.value;
+    const username = nameRef?.current?.value;
     const email = emailRef?.current?.value;
     const password = passwordRef?.current?.value;
     const confirmPassword = confirmPassRef?.current?.value;
     const req = {
-      name,
+      username,
       email,
-      password,
-      confirmPassword
+      password
     };
     console.log(req);
-    SendUserDetails(req).then(({ data, err }) => {
+    console.log(password)
+    
+    console.log(confirmPassword)
+    if(password == confirmPassword){
+    SignUp(req).then(({ data, err }) => {
       if (data) {
         if (data.accessToken) {
-          console.log("HI");
           SetAuthKey(data.accessToken);
           signIn();
           history.push("/dashboard");
           console.log(status, "LOGGING_IN");
           console.log(status, "LOGGED_IN");
         } else {
+          setfailureMsg(data)
           setFailedLoggedIn(true);
         }
       }
     });
-  };
+  }else{
+    setfailureMsg("Password and confirm password field doesnot match")
+      setFailedLoggedIn(true);
+  }
+}
   setTimeout(function () {
     setCardAnimation("");
   }, 700);
@@ -75,10 +88,12 @@ export default function LoginPage(props) {
   return (
     <>
       {FailedLoggedIn && (
-        <Alert variant="outlined" severity="error" onClose={true}>
+        <Snackbar anchorOrigin={{vertical: "bottom",horizontal: "center" }} onClose={()=>{setFailedLoggedIn(false)}} open={FailedLoggedIn}>
+        <Alert  severity="error" onClose={()=>{setFailedLoggedIn(false)}}>
           <AlertTitle> Logged In Fail</AlertTitle>
-          <strong>Enter Correct Credentials</strong>
+          <strong>{failureMsg}</strong>
         </Alert>
+        </Snackbar>
       )}
       <div>
         <Header
@@ -109,6 +124,8 @@ export default function LoginPage(props) {
                         <CustomInput
                           labelText="Username..."
                           id="first"
+                          value={username}
+                          onChange={(e)=>{setUsername(e.target.value)}}
                           formControlProps={{
                             fullWidth: true,
                           }}
@@ -128,6 +145,8 @@ export default function LoginPage(props) {
                           formControlProps={{
                             fullWidth: true,
                           }}
+                          value={email}
+                          onChange={(e)=>{setEmail(e.target.value)}}
                           inputProps={{
                             type: "email",
                             inputRef: emailRef,
@@ -144,6 +163,8 @@ export default function LoginPage(props) {
                           formControlProps={{
                             fullWidth: true,
                           }}
+                          value ={password}
+                          onChange={(e)=>{setPassword(e.target.value)}}
                           inputProps={{
                             type: "password",
                             inputRef: passwordRef,
@@ -163,9 +184,11 @@ export default function LoginPage(props) {
                           formControlProps={{
                             fullWidth: true,
                           }}
+                          value={confirmPassword}
+                          onChange={(e)=>{setConfirmPassword(e.target.value)}}
                           inputProps={{
                             type: "password",
-                            inputRef: passwordRef,
+                            inputRef: confirmPassRef,
                             endAdornment: (
                               <InputAdornment position="end">
                                 <Icon className={classes.inputIconsColor}>

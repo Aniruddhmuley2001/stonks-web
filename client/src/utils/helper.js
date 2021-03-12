@@ -46,6 +46,18 @@ export async function SendUserDetails(req) {
   }
 }
 
+export async function SignUp(req) {
+  const url = BASEURL + "/signUp";
+  console.log(url);
+  try {
+    const { data } = await axios.post(url, req);
+    console.log(data);
+    return { data, error: false };
+  } catch {
+    return { data: null, error: true };
+  }
+}
+
 //axios.post(URL, data, config).then(...)
 export async function FetchLeaderboard() {
   console.log("HI");
