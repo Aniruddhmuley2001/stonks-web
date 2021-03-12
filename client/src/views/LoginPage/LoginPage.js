@@ -159,12 +159,11 @@ export default function LoginPage(props) {
                           Login Now
                         </Button>
                       </CardFooter>
-                      <div>
-                        <p>Not registered? Sign up here &nbsp;
-                          <Button component={LinkBehavior} size="sm" color="info">
-                            SignUp here
-                          </Button>
-                        </p>
+                      <div style={{textAlign:"center"}}>
+                        <p>Not registered? Sign up here</p>
+                        <Button component={LinkBehavior} size="sm" color="info">
+                          SignUp here
+                        </Button> 
                       </div>
                     </form>
                   </Card>
