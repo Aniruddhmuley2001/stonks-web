@@ -1,7 +1,5 @@
 /*eslint-disable*/
 import React from "react";
-import DeleteIcon from "@material-ui/icons/Delete";
-import IconButton from "@material-ui/core/IconButton";
 // react components for routing our app without refresh
 import { Link } from "react-router-dom";
 
@@ -9,7 +7,6 @@ import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import Tooltip from "@material-ui/core/Tooltip";
 
 // @material-ui/icons
 import { Apps, CloudDownload, TocIcon } from "@material-ui/icons";
@@ -33,7 +30,7 @@ export default function HeaderLinks(props) {
       <ListItem className={classes.listItem}>
         <CustomDropdown
           noLiPadding
-          buttonText="Leaderboard"
+          buttonText="Table"
           buttonProps={{
             className: classes.navLink,
             color: "transparent",
@@ -41,10 +38,10 @@ export default function HeaderLinks(props) {
           buttonIcon={Apps}
           dropdownList={[
             <Link to="/leaderboard-trader" className={classes.dropdownLink}>
-              Traders
+              Traders' Leaderboard
             </Link>,
             <Link to="/leaderboard-org" className={classes.dropdownLink}>
-              Organizations
+              Index Price
             </Link>,
           ]}
         />

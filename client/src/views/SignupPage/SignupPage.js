@@ -107,7 +107,7 @@ export default function LoginPage(props) {
                       </CardHeader>
                       <CardBody>
                         <CustomInput
-                          labelText="First Name..."
+                          labelText="Username..."
                           id="first"
                           formControlProps={{
                             fullWidth: true,
@@ -178,7 +178,7 @@ export default function LoginPage(props) {
                         />
                       </CardBody>
                       <CardFooter className={classes.cardFooter}>
-                        <Button type="submit" simple color="info" size="lg">
+                        <Button type="submit" variant="contained" color="info">
                           Sign Up Now
                         </Button>
                       </CardFooter>

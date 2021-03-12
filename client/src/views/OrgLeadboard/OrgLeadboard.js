@@ -8,27 +8,27 @@ import SectionNavbars from "../Components/Sections/SectionNavbars";
 import Footer from "../../components/Footer/Footer.js";
 
 const columns = [
-  { id: "position", label: "Position", minWidth: 80, align: "center" },
-  { id: "name", label: "Participant", minWidth: 120, align: "center" },
+  { id: "index", label: "Index", minWidth: 80, align: "center" },
+  { id: "name", label: "Organization", minWidth: 120, align: "center" },
   {
     id: "holdings",
-    label: "Total holdings",
+    label: "Price",
     minWidth: 100,
     align: "center",
     format: (value) => value.toLocaleString("en-US"),
   },
 ];
 
-function createData(position, name, holdings) {
-  return { position, name, holdings };
+function createData(index, name, holdings) {
+  return { index, name, holdings };
 }
 
 const rows = [
-  createData(1, "A", 10),
-  createData(2, "B", 11),
-  createData(3, "C", 14),
-  createData(4, "D", 12),
-  createData(5, "E", 13),
+  createData("O1", "Org 1", 10),
+  createData("O2", "Org 2", 11),
+  createData("O3", "Org 3", 14),
+  createData("O4", "Org 4", 12),
+  createData("O5", "Org 5", 13),
 ];
 
 const useStyles = makeStyles({
@@ -58,7 +58,7 @@ export default function OrgLeadboard() {
     <Paper className={classes.root}>
       <SectionNavbars />
       <Typography variant="h4" align="center" style={{ margin: "20px 0px" }}>
-        Organizations Leaderboard
+        Index Price
       </Typography>
       <TableList
         container={classes.container}

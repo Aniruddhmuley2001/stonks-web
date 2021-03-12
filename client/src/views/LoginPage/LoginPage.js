@@ -1,12 +1,15 @@
 import React, { useRef, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import { Link as RouterLink } from 'react-router-dom';
+
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Icon from "@material-ui/core/Icon";
+
 // @material-ui/icons
 import Email from "@material-ui/icons/Email";
-import People from "@material-ui/icons/People";
+
 // core components
 import Header from "components/Header/Header.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
@@ -26,6 +29,11 @@ import image from "assets/img/stock-background-3.jpg";
 import { SendUserDetails, SetAuthKey } from "../../utils/helper";
 import { useUserContext } from "context/UserContext";
 import { Typography } from "@material-ui/core";
+
+const LinkBehavior = React.forwardRef((props, ref) => (
+  <RouterLink ref={ref} to="/sign-up" {...props} />
+));
+
 const useStyles = makeStyles(styles);
 
 export default function LoginPage(props) {
@@ -105,22 +113,6 @@ export default function LoginPage(props) {
                       </CardHeader>
                       <CardBody>
                         <CustomInput
-                          labelText="First Name..."
-                          id="first"
-                          formControlProps={{
-                            fullWidth: true,
-                          }}
-                          inputProps={{
-                            type: "text",
-                            inputRef: nameRef,
-                            endAdornment: (
-                              <InputAdornment position="end">
-                                <People className={classes.inputIconsColor} />
-                              </InputAdornment>
-                            ),
-                          }}
-                        />
-                        <CustomInput
                           labelText="Email..."
                           id="email"
                           formControlProps={{
@@ -155,15 +147,25 @@ export default function LoginPage(props) {
                             autoComplete: "off",
                           }}
                         />
-                        <Typography align="center" variant="caption" display="block" gutterBottom>
+                        {/*<Typography align="center" variant="caption" display="block" gutterBottom>
                           <a href="/sign-up" style={{color:"InfoText", fontSize:"1rem"}}>SignUp here</a>
-                        </Typography>
+                        </Typography>*/}
                       </CardBody>
                       <CardFooter className={classes.cardFooter}>
-                        <Button type="submit" simple color="info" size="lg">
+                        {/*<Button type="submit" simple color="info" size="lg">
                           Get started
+                        </Button>*/}
+                        <Button type="submit" variant="contained" color="info">
+                          Login Now
                         </Button>
                       </CardFooter>
+                      <div>
+                        <p>Not registered? Sign up here &nbsp;
+                          <Button component={LinkBehavior} size="sm" color="info">
+                            SignUp here
+                          </Button>
+                        </p>
+                      </div>
                     </form>
                   </Card>
                 </GridItem>

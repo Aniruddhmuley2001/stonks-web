@@ -77,6 +77,8 @@ export default function SectionPills() {
                           <li>The strategies should be based on the recent problems our world is facing.</li>
                           <li>A company with the highest percentage increase in stock price from the very beginning of the event until the very last moment of the 3rd day will be the winner in the company category.</li>
                         </ul>
+                        <br/>
+                        <h6>**In case of a tie or dispute, the final decision lies in the hands of the judge and the organizing committee.**</h6>
                       </span>
                     )
                   },

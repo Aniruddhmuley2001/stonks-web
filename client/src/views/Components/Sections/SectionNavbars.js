@@ -37,7 +37,7 @@ export default function SectionNavbars() {
               <ListItem className={classes.listItem}>
                 <CustomDropdown
                   noLiPadding
-                  buttonText="Leaderboard"
+                  buttonText="Table"
                   buttonProps={{
                     className: classes.navLink,
                     color: "transparent",
@@ -48,13 +48,13 @@ export default function SectionNavbars() {
                       to="/leaderboard-trader"
                       className={classes.dropdownLink}
                     >
-                      Traders
+                      Traders' Leaderboard
                     </Link>,
                     <Link
                       to="/leaderboard-org"
                       className={classes.dropdownLink}
                     >
-                      Organizations
+                      Index Price
                     </Link>,
                   ]}
                 />
