@@ -80,12 +80,16 @@ export default function LoginPage(props) {
   }, [status]);
   return (
     <>
-      {FailedLoggedIn && (
-        <Alert variant="outlined" severity="error" onClose={true}>
-          <AlertTitle> Logged In Fail</AlertTitle>
-          <strong>Enter Correct Credentials</strong>
-        </Alert>
-      )}
+      {FailedLoggedIn && 
+        // <Alert variant="outlined" severity="error" onClose={true}>
+        //   <AlertTitle> Logged In Fail</AlertTitle>
+        //   <strong>Enter Correct Credentials</strong>
+        // </Alert>
+        <Alert className={classes.alert} severity="danger">
+            <AlertTitle>Invalid Login</AlertTitle>
+            <strong>Please try with valid credentials, or SignUp</strong>
+        </Alert> 
+      }
       <div>
         <Header
           absolute

@@ -1,6 +1,14 @@
 import { container } from "assets/jss/material-kit-react.js";
 
 const signupPageStyle = {
+  alert:{
+    position:'relative',
+    height:'10vh',
+    width:'50vw',
+    top:'10%',
+    zIndex:'1000',
+    color:'danger'
+  },
   container: {
     ...container,
     zIndex: "2",
