@@ -4,6 +4,7 @@ import { createBrowserHistory } from "history";
 import { Router, Route, Switch, Redirect } from "react-router-dom";
 import Components from "views/Components/Components.js";
 import LoginPage from "views/LoginPage/LoginPage.js";
+import SignupPage from "views/SignupPage/SignupPage.js"
 import OrgLeadboard from "views/OrgLeadboard/OrgLeadboard.js";
 import TradeLeadboard from "views/TradeLeadboard/TradeLeadboard.js";
 import Dashboard from "views/Dashboard/Dashboard.js";
@@ -16,6 +17,7 @@ const App = () => {
       <Router history={hist}>
         <Switch>
           <Route path="/login-page" component={LoginPage} />
+          <Route path="/sign-up" component={SignupPage} />
           <Route path="/leaderboard-org">
             <OrgLeadboard />
           </Route>

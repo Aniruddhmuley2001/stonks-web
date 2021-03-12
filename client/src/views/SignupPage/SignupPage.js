@@ -25,7 +25,6 @@ import image from "assets/img/stock-background-3.jpg";
 
 import { SendUserDetails, SetAuthKey } from "../../utils/helper";
 import { useUserContext } from "context/UserContext";
-import { Typography } from "@material-ui/core";
 const useStyles = makeStyles(styles);
 
 export default function LoginPage(props) {
@@ -36,31 +35,34 @@ export default function LoginPage(props) {
   const nameRef = useRef(null);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
+  const confirmPassRef = useRef(null);
   const handleSubmit = (event) => {
     event.preventDefault();
     const name = nameRef?.current?.value;
     const email = emailRef?.current?.value;
     const password = passwordRef?.current?.value;
+    const confirmPassword = confirmPassRef?.current?.value;
     const req = {
       name,
       email,
       password,
+      confirmPassword
     };
     console.log(req);
-    // SendUserDetails(req).then(({ data, err }) => {
-    //   if (data) {
-    //     if (data.accessToken) {
-    //       console.log("HI");
-    //       SetAuthKey(data.accessToken);
-    //       signIn();
-    //       history.push("/dashboard");
-    //       console.log(status, "LOGGING_IN");
-    //       console.log(status, "LOGGED_IN");
-    //     } else {
-    //       setFailedLoggedIn(true);
-    //     }
-    //   }
-    // });
+    SendUserDetails(req).then(({ data, err }) => {
+      if (data) {
+        if (data.accessToken) {
+          console.log("HI");
+          SetAuthKey(data.accessToken);
+          signIn();
+          history.push("/dashboard");
+          console.log(status, "LOGGING_IN");
+          console.log(status, "LOGGED_IN");
+        } else {
+          setFailedLoggedIn(true);
+        }
+      }
+    });
   };
   setTimeout(function () {
     setCardAnimation("");
@@ -101,7 +103,7 @@ export default function LoginPage(props) {
                   <Card className={classes[cardAnimaton]}>
                     <form className={classes.form}>
                       <CardHeader color="info" className={classes.cardHeader}>
-                        <h2>Login</h2>
+                        <h2>Sign Up</h2>
                       </CardHeader>
                       <CardBody>
                         <CustomInput
@@ -155,13 +157,29 @@ export default function LoginPage(props) {
                             autoComplete: "off",
                           }}
                         />
-                        <Typography align="center" variant="caption" display="block" gutterBottom>
-                          <a href="/sign-up" style={{color:"InfoText", fontSize:"1rem"}}>SignUp here</a>
-                        </Typography>
+                        <CustomInput
+                          labelText="Confirm Password"
+                          id="pass"
+                          formControlProps={{
+                            fullWidth: true,
+                          }}
+                          inputProps={{
+                            type: "password",
+                            inputRef: passwordRef,
+                            endAdornment: (
+                              <InputAdornment position="end">
+                                <Icon className={classes.inputIconsColor}>
+                                  lock_outline
+                                </Icon>
+                              </InputAdornment>
+                            ),
+                            autoComplete: "off",
+                          }}
+                        />
                       </CardBody>
                       <CardFooter className={classes.cardFooter}>
                         <Button type="submit" simple color="info" size="lg">
-                          Get started
+                          Sign Up Now
                         </Button>
                       </CardFooter>
                     </form>
