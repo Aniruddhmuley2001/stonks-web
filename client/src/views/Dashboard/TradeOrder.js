@@ -74,7 +74,9 @@ export default function TradeOrder({closeModal,action,stateSuccess}){
           stateSuccess(true);
           window.location.reload()
         }
-
+        else {
+          stateSuccess(false);
+        }
       })
     }else{
       axios.post('http://localhost:8080/sell',{index:currentStock.index,quantity:quantity}).then((response)=>{
@@ -83,7 +85,9 @@ export default function TradeOrder({closeModal,action,stateSuccess}){
           stateSuccess(true);
           window.location.reload()
         }
-
+        else {
+          stateSuccess(false);
+        }
       })
     }
     }
